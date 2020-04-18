@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		915CEF9524453CE40097F645 /* hw9_privateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF9424453CE40097F645 /* hw9_privateTests.swift */; };
 		915CEFA024453CE40097F645 /* hw9_privateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF9F24453CE40097F645 /* hw9_privateUITests.swift */; };
 		915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEFAD244915E80097F645 /* WeatherGetter.swift */; };
+		915CEFB0244B8D850097F645 /* Assets.xcassets.zip in Resources */ = {isa = PBXBuildFile; fileRef = 915CEFAF244B8D850097F645 /* Assets.xcassets.zip */; };
 		B86AFED5BB8262A6159F0951 /* Pods_hw9_private_hw9_privateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01736B0490AA80B1974F41DA /* Pods_hw9_private_hw9_privateUITests.framework */; };
 		F2896C856EA8170473C998A3 /* Pods_hw9_private.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B559E8DBC350F4D90DDB3788 /* Pods_hw9_private.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		915CEF9F24453CE40097F645 /* hw9_privateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hw9_privateUITests.swift; sourceTree = "<group>"; };
 		915CEFA124453CE40097F645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915CEFAD244915E80097F645 /* WeatherGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGetter.swift; sourceTree = "<group>"; };
+		915CEFAF244B8D850097F645 /* Assets.xcassets.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Assets.xcassets.zip; path = ../../../Downloads/Assets.xcassets.zip; sourceTree = "<group>"; };
 		B559E8DBC350F4D90DDB3788 /* Pods_hw9_private.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hw9_private.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AAE466EC33D1BC4D1C1B55 /* Pods-hw9-privateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-privateTests.release.xcconfig"; path = "Target Support Files/Pods-hw9-privateTests/Pods-hw9-privateTests.release.xcconfig"; sourceTree = "<group>"; };
 		CAD8D08842CF7F72D295CE85 /* Pods-hw9-private-hw9-privateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private-hw9-privateUITests.release.xcconfig"; path = "Target Support Files/Pods-hw9-private-hw9-privateUITests/Pods-hw9-private-hw9-privateUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,13 +107,13 @@
 				46012F6177825B2736886F9A /* Pods-hw9-privateTests.debug.xcconfig */,
 				C1AAE466EC33D1BC4D1C1B55 /* Pods-hw9-privateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		8D003AB8C328F8DA556E2D40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				915CEFAF244B8D850097F645 /* Assets.xcassets.zip */,
 				B559E8DBC350F4D90DDB3788 /* Pods_hw9_private.framework */,
 				01736B0490AA80B1974F41DA /* Pods_hw9_private_hw9_privateUITests.framework */,
 				F0C2498ABAC7C433E5EAE1B4 /* Pods_hw9_privateTests.framework */,
@@ -287,6 +289,7 @@
 				915CEF8A24453CE30097F645 /* LaunchScreen.storyboard in Resources */,
 				915CEF8724453CE30097F645 /* Assets.xcassets in Resources */,
 				915CEF8524453CE00097F645 /* Main.storyboard in Resources */,
+				915CEFB0244B8D850097F645 /* Assets.xcassets.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

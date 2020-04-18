@@ -21,8 +21,31 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let weather = WeatherGetter()
-        weather.getWeather(city:"Palo%20Alto")
+        URLSession.shared.dataTask(with: request as URLRequest) {
+        (data, response, error) in
+            guard let httpResponse = response as?
+                HTTPURLResponse else {
+                    //Error
+                    print("Error:\n\(String(describing: error))")
+                    return
+            }
+            if httpResponse.statusCode == 200 {
+                //Http success
+                let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString)
+                    let temperature = json["main"]["temp"]
+                    let city = json["name"]
+                    let state = "California"
+                    let features = json["weather"][0]["main"]
+                }
+                print("Data:\n\(String(describing: dataString))")
+            }
+            else {
+                print("Error:\n\(String(describing: error))")
+                //Http error
+            }
+        }.resume()
     }
     //MARK: Actions
 

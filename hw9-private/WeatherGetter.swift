@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import SwiftyJSON
  
 class WeatherGetter {
-  
   func getWeather(city: String) {
     _ = "http://api.openweathermap.org/data/2.5/weather"
     _ = "0411db9d99ea4753e711226ad39d3157"
@@ -26,6 +26,14 @@ class WeatherGetter {
         if httpResponse.statusCode == 200 {
             //Http success
             let dataString = String(data: data!, encoding: String.Encoding.utf8)
+            if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+                let json = JSON(data: dataFromString)
+                let temperature = json["main"]["temp"]
+                let city = json["name"]
+                let state = "California"
+                let features = json["weather"][0]["main"]
+                return json
+            }
             print("Data:\n\(String(describing: dataString))")
         }
         else {
