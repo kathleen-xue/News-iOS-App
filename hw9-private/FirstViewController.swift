@@ -20,32 +20,45 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        URLSession.shared.dataTask(with: request as URLRequest) {
-        (data, response, error) in
-            guard let httpResponse = response as?
-                HTTPURLResponse else {
-                    //Error
-                    print("Error:\n\(String(describing: error))")
-                    return
-            }
-            if httpResponse.statusCode == 200 {
-                //Http success
-                let dataString = String(data: data!, encoding: String.Encoding.utf8)
-                if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
-                    let json = JSON(data: dataFromString)
-                    let temperature = json["main"]["temp"]
-                    let city = json["name"]
-                    let state = "California"
-                    let features = json["weather"][0]["main"]
+        let weather = WeatherGetter()
+        let city = "Palo Alto"
+        let state = "California"
+        weatherApiFeat.textColor = UIColor.white
+        weatherApiTemp.textColor = UIColor.white
+        weatherApiCity.textColor = UIColor.white
+        weatherApiState.textColor = UIColor.white
+        weather.getWeather(city: city) {
+            isValid in
+            print(isValid)
+            // do something with the returned Bool
+            DispatchQueue.main.async {
+               // update UI
+                self.weatherApiTemp.text = weather.temperature
+                self.weatherApiFeat.text = weather.features
+                if weather.features == "Clouds" {
+                    self.weatherApiImg.image = UIImage(named: "cloudy_weather")
                 }
-                print("Data:\n\(String(describing: dataString))")
+                else if weather.features == "Clear" {
+                    self.weatherApiImg.image = UIImage(named: "clear_weather")
+                }
+                else if weather.features == "Snow" {
+                    self.weatherApiImg.image = UIImage(named: "snowy_weather")
+                }
+                else if weather.features == "Rain" {
+                    self.weatherApiImg.image = UIImage(named: "rainy_weather")
+                }
+                else if weather.features == "Thunderstorm" {
+                    self.weatherApiImg.image = UIImage(named: "thunder_weather")
+                }
+                else {
+                    self.weatherApiImg.image = UIImage(named: "sunny_weather")
+                }
             }
-            else {
-                print("Error:\n\(String(describing: error))")
-                //Http error
-            }
-        }.resume()
+        }
+        weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
+        weatherApiImg.clipsToBounds = true
+        weatherApiCity.text = city
+        weatherApiState.text = state
     }
     //MARK: Actions
 
