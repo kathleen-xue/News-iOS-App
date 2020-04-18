@@ -75,5 +75,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is in use to give you weather data.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is in use to give you weather data.</string>
 </dict>
 </plist>

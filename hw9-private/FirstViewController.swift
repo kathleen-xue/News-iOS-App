@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import CoreLocation
+import MapKit
 
 class FirstViewController: UIViewController {
     //MARK: Properties
@@ -17,17 +19,47 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var weatherApiState: UILabel!
     @IBOutlet weak var weatherApiTemp: UILabel!
     @IBOutlet weak var weatherApiFeat: UILabel!
+    let locationManager = CLLocationManager()
+    let geoCoder = CLGeocoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        var locationLat = 37.439
+        var locationLon = -122.14
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self as? CLLocationManagerDelegate
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        var city = "Palo Alto"
+        var state = "CA"
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+            locationLat = locValue.latitude
+            locationLon = locValue.longitude
+            
+            let location = CLLocation(latitude: locationLat, longitude: locationLon)
+            geoCoder.reverseGeocodeLocation(location, completionHandler:
+                {
+                    placemarks, error -> Void in
+
+                    // Place details
+                    guard let placeMark = placemarks?.first else { return }
+                    state = placeMark.administrativeArea ?? "CA"
+                    // City
+                    city = placeMark.subAdministrativeArea ?? "Palo Alto"
+            })
+        }
         let weather = WeatherGetter()
-        let city = "Palo Alto"
-        let state = "California"
+        state = weather.convertStateToLongState(state: state)
         weatherApiFeat.textColor = UIColor.white
         weatherApiTemp.textColor = UIColor.white
         weatherApiCity.textColor = UIColor.white
         weatherApiState.textColor = UIColor.white
-        weather.getWeather(city: city) {
+        weather.getWeather(lat: locationLat, lon: locationLon) {
             isValid in
             print(isValid)
             // do something with the returned Bool
