@@ -16,6 +16,7 @@
 		915CEF8A24453CE30097F645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915CEF8824453CE30097F645 /* LaunchScreen.storyboard */; };
 		915CEF9524453CE40097F645 /* hw9_privateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF9424453CE40097F645 /* hw9_privateTests.swift */; };
 		915CEFA024453CE40097F645 /* hw9_privateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF9F24453CE40097F645 /* hw9_privateUITests.swift */; };
+		915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEFAD244915E80097F645 /* WeatherGetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		915CEF9B24453CE40097F645 /* hw9-privateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hw9-privateUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CEF9F24453CE40097F645 /* hw9_privateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hw9_privateUITests.swift; sourceTree = "<group>"; };
 		915CEFA124453CE40097F645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		915CEFAD244915E80097F645 /* WeatherGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				915CEF8624453CE30097F645 /* Assets.xcassets */,
 				915CEF8824453CE30097F645 /* LaunchScreen.storyboard */,
 				915CEF8B24453CE30097F645 /* Info.plist */,
+				915CEFAD244915E80097F645 /* WeatherGetter.swift */,
 			);
 			path = "hw9-private";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				915CEF8224453CE00097F645 /* SecondViewController.swift in Sources */,
+				915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */,
 				915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */,
 				915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */,
 				915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */,
