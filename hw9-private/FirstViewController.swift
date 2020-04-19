@@ -25,6 +25,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate  {
     var state = "CA"
     var locationLat = 37.439
     var locationLon = -122.14
+    var homeNewsData = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
         if (CLLocationManager.locationServicesEnabled())
@@ -43,6 +44,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate  {
         
         weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
         weatherApiImg.clipsToBounds = true
+        
+        let homeNews = HomeNewsGetter()
+        homeNews.getHomeNews(completion: { (data) -> Void in
+            //print(data)
+            self.homeNewsData = data
+        })
         
     }
     

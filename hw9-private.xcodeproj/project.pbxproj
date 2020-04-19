@@ -19,6 +19,7 @@
 		915CEFA024453CE40097F645 /* hw9_privateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF9F24453CE40097F645 /* hw9_privateUITests.swift */; };
 		915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEFAD244915E80097F645 /* WeatherGetter.swift */; };
 		915CEFB0244B8D850097F645 /* Assets.xcassets.zip in Resources */ = {isa = PBXBuildFile; fileRef = 915CEFAF244B8D850097F645 /* Assets.xcassets.zip */; };
+		9183061D244BF8A0001938E1 /* HomeNewsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */; };
 		B86AFED5BB8262A6159F0951 /* Pods_hw9_private_hw9_privateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01736B0490AA80B1974F41DA /* Pods_hw9_private_hw9_privateUITests.framework */; };
 		F2896C856EA8170473C998A3 /* Pods_hw9_private.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B559E8DBC350F4D90DDB3788 /* Pods_hw9_private.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		915CEFA124453CE40097F645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915CEFAD244915E80097F645 /* WeatherGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGetter.swift; sourceTree = "<group>"; };
 		915CEFAF244B8D850097F645 /* Assets.xcassets.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Assets.xcassets.zip; path = ../../../Downloads/Assets.xcassets.zip; sourceTree = "<group>"; };
+		9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsGetter.swift; sourceTree = "<group>"; };
 		B559E8DBC350F4D90DDB3788 /* Pods_hw9_private.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hw9_private.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1AAE466EC33D1BC4D1C1B55 /* Pods-hw9-privateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-privateTests.release.xcconfig"; path = "Target Support Files/Pods-hw9-privateTests/Pods-hw9-privateTests.release.xcconfig"; sourceTree = "<group>"; };
 		CAD8D08842CF7F72D295CE85 /* Pods-hw9-private-hw9-privateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private-hw9-privateUITests.release.xcconfig"; path = "Target Support Files/Pods-hw9-private-hw9-privateUITests/Pods-hw9-private-hw9-privateUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				915CEF8824453CE30097F645 /* LaunchScreen.storyboard */,
 				915CEF8B24453CE30097F645 /* Info.plist */,
 				915CEFAD244915E80097F645 /* WeatherGetter.swift */,
+				9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */,
 			);
 			path = "hw9-private";
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			files = (
 				915CEF8224453CE00097F645 /* SecondViewController.swift in Sources */,
 				915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */,
+				9183061D244BF8A0001938E1 /* HomeNewsGetter.swift in Sources */,
 				915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */,
 				915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */,
 				915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */,
