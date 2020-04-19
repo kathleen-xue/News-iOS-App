@@ -11,7 +11,7 @@ import SwiftyJSON
 import CoreLocation
 import MapKit
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate  {
+class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate  {
     //MARK: Properties
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var weatherApiImg: UIImageView!
@@ -19,6 +19,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate  {
     @IBOutlet weak var weatherApiState: UILabel!
     @IBOutlet weak var weatherApiTemp: UILabel!
     @IBOutlet weak var weatherApiFeat: UILabel!
+    @IBOutlet weak var homeNewsTable: UITableView!
     var locationManager: CLLocationManager!
     let geoCoder = CLGeocoder()
     var city = "Palo Alto"
@@ -28,6 +29,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate  {
     var homeNewsData = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        homeNewsTable.dataSource = self
+        homeNewsTable.delegate = self
+        homeNewsTable.register(UITableViewCell.self, forCellReuseIdentifier: "homeNewsCell")
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -49,8 +53,30 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate  {
         homeNews.getHomeNews(completion: { (data) -> Void in
             //print(data)
             self.homeNewsData = data
+            self.homeNewsTable.reloadData()
         })
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        homeNewsTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.homeNewsData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeNewsCell", for: indexPath) as! UITableViewCell
+        let currentJson = JSON(self.homeNewsData[indexPath.item])
+        if let c = currentJson["id"].string {
+            cell.textLabel?.text = c
+        }
+        else {
+            cell.textLabel?.text = "sample"
+        }
+        return cell
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
