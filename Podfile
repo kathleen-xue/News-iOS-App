@@ -10,6 +10,7 @@ target 'hw9-private' do
   pod 'SwiftSpinner'
   pod 'Charts'
   pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'Kingfisher'
 
   # Pods for hw9-private
 

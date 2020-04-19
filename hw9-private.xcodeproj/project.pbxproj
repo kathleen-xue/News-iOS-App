@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1676FFECCF09F6AAC0B952B6 /* Pods_hw9_privateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C2498ABAC7C433E5EAE1B4 /* Pods_hw9_privateTests.framework */; };
+		9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */; };
+		9151DA38244CFF7300E28AFF /* HomeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA37244CFF7300E28AFF /* HomeNewsTableViewController.swift */; };
 		915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7B24453CE00097F645 /* AppDelegate.swift */; };
 		915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7D24453CE00097F645 /* SceneDelegate.swift */; };
 		915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7F24453CE00097F645 /* FirstViewController.swift */; };
@@ -46,6 +48,8 @@
 		2F1AD673D78203A584CE77E3 /* Pods-hw9-private.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private.release.xcconfig"; path = "Target Support Files/Pods-hw9-private/Pods-hw9-private.release.xcconfig"; sourceTree = "<group>"; };
 		46012F6177825B2736886F9A /* Pods-hw9-privateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-privateTests.debug.xcconfig"; path = "Target Support Files/Pods-hw9-privateTests/Pods-hw9-privateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		656C063CD392D5AA72D4E230 /* Pods-hw9-private.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private.debug.xcconfig"; path = "Target Support Files/Pods-hw9-private/Pods-hw9-private.debug.xcconfig"; sourceTree = "<group>"; };
+		9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableCell.swift; sourceTree = "<group>"; };
+		9151DA37244CFF7300E28AFF /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		915CEF7824453CE00097F645 /* hw9-private.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hw9-private.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CEF7B24453CE00097F645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		915CEF7D24453CE00097F645 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				915CEF7B24453CE00097F645 /* AppDelegate.swift */,
 				915CEF7D24453CE00097F645 /* SceneDelegate.swift */,
 				915CEF7F24453CE00097F645 /* FirstViewController.swift */,
+				9151DA37244CFF7300E28AFF /* HomeNewsTableViewController.swift */,
 				915CEF8124453CE00097F645 /* SecondViewController.swift */,
 				915CEF8324453CE00097F645 /* Main.storyboard */,
 				915CEF8624453CE30097F645 /* Assets.xcassets */,
@@ -158,6 +163,7 @@
 				915CEF8B24453CE30097F645 /* Info.plist */,
 				915CEFAD244915E80097F645 /* WeatherGetter.swift */,
 				9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */,
+				9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */,
 			);
 			path = "hw9-private";
 			sourceTree = "<group>";
@@ -421,7 +427,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				915CEF8224453CE00097F645 /* SecondViewController.swift in Sources */,
+				9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */,
 				915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */,
+				9151DA38244CFF7300E28AFF /* HomeNewsTableViewController.swift in Sources */,
 				9183061D244BF8A0001938E1 /* HomeNewsGetter.swift in Sources */,
 				915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */,
 				915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */,

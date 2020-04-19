@@ -98,10 +98,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeNewsCell" rowHeight="111" id="TWe-1g-5Cv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeNewsCell" rowHeight="111" id="TWe-1g-5Cv" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TWe-1g-5Cv" id="oUE-Vp-c8Y">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TWe-1g-5Cv" id="oUE-Vp-c8Y" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -144,6 +144,12 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="homeNewsTableImg" destination="Rba-S3-sLt" id="V2S-U7-qZt"/>
+                                            <outlet property="homeNewsTableSection" destination="PpK-cJ-d0v" id="FTd-66-5ow"/>
+                                            <outlet property="homeNewsTableTime" destination="bmj-Ue-pmR" id="ffr-0k-d8p"/>
+                                            <outlet property="homeNewsTableTitle" destination="t1p-oQ-1Y6" id="27L-I4-1b1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -10,9 +10,9 @@ import UIKit
 import SwiftyJSON
 import CoreLocation
 import MapKit
+import Kingfisher
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate  {
-    //MARK: Properties
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var weatherApiImg: UIImageView!
     @IBOutlet weak var weatherApiCity: UILabel!
@@ -31,7 +31,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         super.viewDidLoad()
         homeNewsTable.dataSource = self
         homeNewsTable.delegate = self
-        homeNewsTable.register(UITableViewCell.self, forCellReuseIdentifier: "homeNewsCell")
+        homeNewsTable.register(HomeNewsTableCell.self, forCellReuseIdentifier: "homeNewsCell")
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -48,19 +48,17 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
         weatherApiImg.clipsToBounds = true
-        
         let homeNews = HomeNewsGetter()
         homeNews.getHomeNews(completion: { (data) -> Void in
             //print(data)
             self.homeNewsData = data
             self.homeNewsTable.reloadData()
         })
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        homeNewsTable.reloadData()
+        //homeNewsTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,13 +66,42 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeNewsCell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeNewsCell", for: indexPath) as! HomeNewsTableCell
         let currentJson = JSON(self.homeNewsData[indexPath.item])
-        if let c = currentJson["id"].string {
-            cell.textLabel?.text = c
+        if let section = currentJson["sectionName"].string {
+            cell.homeNewsTableSection?.text = section
         }
         else {
-            cell.textLabel?.text = "sample"
+            cell.homeNewsTableSection?.text = "None"
+        }
+        if let title = currentJson["webTitle"].string {
+            cell.homeNewsTableTitle?.text = title
+        }
+        else {
+            cell.homeNewsTableTitle?.text = "None"
+        }
+        if let imgUrlString =  currentJson["fields"]["thumbnail"].string {
+            let url = URL(string: imgUrlString)
+            cell.homeNewsTableImg?.kf.setImage(with: url)
+        }
+        else {
+            cell.homeNewsTableImg?.image = UIImage(named: "default-guardian")
+        }
+        if let publishedTime = currentJson["webPublicationDate"].string {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let date = dateFormatter.date(from:publishedTime)!
+            let now = Date()
+            let formatter = DateComponentsFormatter()
+            formatter.unitsStyle = .full
+            formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
+            formatter.maximumUnitCount = 2
+            let string = formatter.string(from: date, to: now)
+            print(string)
+        }
+        else {
+            cell.homeNewsTableTime?.text = "NaNs ago"
         }
         return cell
     }
