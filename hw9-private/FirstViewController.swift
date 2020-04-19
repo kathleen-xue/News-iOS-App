@@ -11,7 +11,7 @@ import SwiftyJSON
 import CoreLocation
 import MapKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, CLLocationManagerDelegate  {
     //MARK: Properties
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var weatherApiImg: UIImageView!
@@ -19,48 +19,56 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var weatherApiState: UILabel!
     @IBOutlet weak var weatherApiTemp: UILabel!
     @IBOutlet weak var weatherApiFeat: UILabel!
-    let locationManager = CLLocationManager()
+    var locationManager: CLLocationManager!
     let geoCoder = CLGeocoder()
-    
+    var city = "Palo Alto"
+    var state = "CA"
+    var locationLat = 37.439
+    var locationLon = -122.14
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        var locationLat = 37.439
-        var locationLon = -122.14
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self as? CLLocationManagerDelegate
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
-        var city = "Palo Alto"
-        var state = "CA"
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-            locationLat = locValue.latitude
-            locationLon = locValue.longitude
-            
-            let location = CLLocation(latitude: locationLat, longitude: locationLon)
-            geoCoder.reverseGeocodeLocation(location, completionHandler:
-                {
-                    placemarks, error -> Void in
-
-                    // Place details
-                    guard let placeMark = placemarks?.first else { return }
-                    state = placeMark.administrativeArea ?? "CA"
-                    // City
-                    city = placeMark.subAdministrativeArea ?? "Palo Alto"
-            })
-        }
-        let weather = WeatherGetter()
-        state = weather.convertStateToLongState(state: state)
+        
         weatherApiFeat.textColor = UIColor.white
         weatherApiTemp.textColor = UIColor.white
         weatherApiCity.textColor = UIColor.white
         weatherApiState.textColor = UIColor.white
-        weather.getWeather(lat: locationLat, lon: locationLon) {
-            isValid in
+        
+        weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
+        weatherApiImg.clipsToBounds = true
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        self.locationLat = locValue.latitude
+        self.locationLon = locValue.longitude
+        let weather = WeatherGetter()
+        let location = CLLocation(latitude: locationLat, longitude: locationLon)
+        geoCoder.reverseGeocodeLocation(location, completionHandler:
+            {
+                placemarks, error -> Void in
+
+                // Place details
+                guard let placeMark = placemarks?.first else { return }
+                self.state = placeMark.administrativeArea ?? "CA"
+                self.state = weather.convertStateToLongState(state: self.state)
+                print(self.state)
+                self.weatherApiState.text = self.state
+                // City
+                self.city = placeMark.subAdministrativeArea ?? "Palo Alto"
+                print(self.city)
+                self.weatherApiCity.text = self.city
+        })
+        weather.getWeather(lat: self.locationLat, lon: self.locationLon) {
+        isValid in
             print(isValid)
             // do something with the returned Bool
             DispatchQueue.main.async {
@@ -87,12 +95,6 @@ class FirstViewController: UIViewController {
                 }
             }
         }
-        weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
-        weatherApiImg.clipsToBounds = true
-        weatherApiCity.text = city
-        weatherApiState.text = state
     }
-    //MARK: Actions
-
 }
 
