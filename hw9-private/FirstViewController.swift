@@ -64,12 +64,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.homeNewsData)
+        //print(self.homeNewsData)
         return self.homeNewsData.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0;//Choose your custom row height
+        return 110.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,11 +102,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             let date = dateFormatter.date(from:publishedTime)!
             let now = Date()
             let formatter = DateComponentsFormatter()
-            formatter.unitsStyle = .full
+            formatter.unitsStyle = .abbreviated
             formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
-            formatter.maximumUnitCount = 2
-            let string = formatter.string(from: date, to: now)
-            cell.homeNewsTableTime?.text = string
+            formatter.maximumUnitCount = 1
+            let string = String(formatter.string(from: date, to: now)!)
+            cell.homeNewsTableTime?.text = "\(string) ago"
         }
         else {
             cell.homeNewsTableTime?.text = "NaNs ago"
