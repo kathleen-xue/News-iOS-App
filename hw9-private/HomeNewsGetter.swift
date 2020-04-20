@@ -19,7 +19,7 @@ class HomeNewsGetter {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 if let ret_ = swiftyJsonVar["response"]["results"].array {
                     self.data = ret_
-                    print(self.data)
+                    //print(self.data)
                     completion(self.data)
                 }
             }

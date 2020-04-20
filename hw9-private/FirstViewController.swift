@@ -27,11 +27,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var locationLat = 37.439
     var locationLon = -122.14
     var homeNewsData = [Any]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         homeNewsTable.dataSource = self
         homeNewsTable.delegate = self
-        homeNewsTable.register(HomeNewsTableCell.self, forCellReuseIdentifier: "homeNewsCell")
+        //homeNewsTable.register(HomeNewsTableCell.self, forCellReuseIdentifier: "homeNewsCell")
+        homeNewsTable.reloadData()
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -58,15 +60,21 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //homeNewsTable.reloadData()
+        homeNewsTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.homeNewsData)
         return self.homeNewsData.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0;//Choose your custom row height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeNewsCell", for: indexPath) as! HomeNewsTableCell
+        //cell.textLabel?.text = "HI"
         let currentJson = JSON(self.homeNewsData[indexPath.item])
         if let section = currentJson["sectionName"].string {
             cell.homeNewsTableSection?.text = section
@@ -98,7 +106,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
             formatter.maximumUnitCount = 2
             let string = formatter.string(from: date, to: now)
-            print(string)
+            cell.homeNewsTableTime?.text = string
         }
         else {
             cell.homeNewsTableTime?.text = "NaNs ago"

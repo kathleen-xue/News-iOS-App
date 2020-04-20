@@ -98,63 +98,52 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeNewsCell" rowHeight="111" id="TWe-1g-5Cv" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="111"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeNewsCell" rowHeight="123" id="NnV-Cn-2rI" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TWe-1g-5Cv" id="oUE-Vp-c8Y" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="111"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NnV-Cn-2rI" id="GQs-iK-NWN">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rba-S3-sLt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sg-DK-EOZ">
+                                                    <rect key="frame" x="0.0" y="7" width="85" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1p-oQ-1Y6">
-                                                    <rect key="frame" x="119" y="11" width="247" height="57"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHa-Aj-NdD">
+                                                    <rect key="frame" x="103" y="1" width="253" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmj-Ue-pmR">
-                                                    <rect key="frame" x="119" y="89" width="63" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIQ-kA-4jQ">
+                                                    <rect key="frame" x="103" y="73" width="80" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61m-gc-CZF">
-                                                    <rect key="frame" x="197" y="89" width="22" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S19-ef-T6z">
+                                                    <rect key="frame" x="219" y="73" width="119" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpK-cJ-d0v">
-                                                    <rect key="frame" x="211" y="89" width="79" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-qf-l0J">
-                                                    <rect key="frame" x="345" y="82" width="21" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="bookmark" catalog="system"/>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="homeNewsTableImg" destination="Rba-S3-sLt" id="V2S-U7-qZt"/>
-                                            <outlet property="homeNewsTableSection" destination="PpK-cJ-d0v" id="FTd-66-5ow"/>
-                                            <outlet property="homeNewsTableTime" destination="bmj-Ue-pmR" id="ffr-0k-d8p"/>
-                                            <outlet property="homeNewsTableTitle" destination="t1p-oQ-1Y6" id="27L-I4-1b1"/>
+                                            <outlet property="homeNewsTableImg" destination="5sg-DK-EOZ" id="MUz-fe-HpA"/>
+                                            <outlet property="homeNewsTableSection" destination="S19-ef-T6z" id="7An-Tq-kaI"/>
+                                            <outlet property="homeNewsTableTime" destination="XIQ-kA-4jQ" id="ptb-Qd-idL"/>
+                                            <outlet property="homeNewsTableTitle" destination="qHa-Aj-NdD" id="R9h-S3-LLg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
-                                    <outlet property="dataSource" destination="tsR-hK-woN" id="yGa-gK-wCE"/>
-                                    <outlet property="delegate" destination="tsR-hK-woN" id="YSS-t3-Z10"/>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="tfB-i6-1Ym"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="fei-ZQ-BhA"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -163,7 +152,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="homeNewsTable" destination="ySs-ux-n4F" id="Aod-0m-fMD"/>
+                        <outlet property="homeNewsTable" destination="ySs-ux-n4F" id="tFZ-vP-XPr"/>
                         <outlet property="searchBar" destination="NFk-ZU-53E" id="vaJ-Qs-hgc"/>
                         <outlet property="weatherApiCity" destination="pkn-oM-ahh" id="fXl-Ll-tzf"/>
                         <outlet property="weatherApiFeat" destination="wOg-80-ykW" id="TP9-kx-arq"/>
@@ -231,7 +220,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" catalog="system" width="56" height="64"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="rectangle.split.3x3.fill" catalog="system" width="64" height="46"/>
     </resources>
