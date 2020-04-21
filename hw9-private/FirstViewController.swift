@@ -27,13 +27,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var locationLat = 37.439
     var locationLon = -122.14
     var homeNewsData = [Any]()
-
+    let homeNews = HomeNewsGetter()
+    
+    private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         homeNewsTable.dataSource = self
         homeNewsTable.delegate = self
         //homeNewsTable.register(HomeNewsTableCell.self, forCellReuseIdentifier: "homeNewsCell")
         homeNewsTable.reloadData()
+        if #available(iOS 10.0, *) {
+            homeNewsTable.refreshControl = refreshControl
+        } else {
+            homeNewsTable.addSubview(refreshControl)
+        }
+        
+        //let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector(("longPress:")))
+        //self.view.addGestureRecognizer(longPressRecognizer)
+        
         if (CLLocationManager.locationServicesEnabled())
         {
             locationManager = CLLocationManager()
@@ -50,17 +61,42 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
         weatherApiImg.clipsToBounds = true
-        let homeNews = HomeNewsGetter()
+        
         homeNews.getHomeNews(completion: { (data) -> Void in
             //print(data)
             self.homeNewsData = data
             self.homeNewsTable.reloadData()
         })
+        refreshControl.addTarget(self, action: #selector(refreshHomeNews(_:)), for: .valueChanged)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         homeNewsTable.reloadData()
+    }
+    
+    /*func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = homeNewsTable.indexPathForRow(at: touchPoint) {
+                
+                
+                // your code here, get the row for the indexPath or do whatever you want
+            }
+        }
+    }*/
+    
+    @objc private func refreshHomeNews(_ sender: Any) {
+        // Fetch Weather Data
+        homeNews.getHomeNews(completion: { (data) -> Void in
+            //print(data)
+            self.homeNewsData = data
+            self.homeNewsTable.reloadData()
+            self.refreshControl.endRefreshing()
+            //self.activityIndicatorView.stopAnimating()
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
