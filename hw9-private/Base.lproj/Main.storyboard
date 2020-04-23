@@ -186,7 +186,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bby-lR-ORz"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="774" y="-615"/>
         </scene>
         <!--Headlines-->
         <scene sceneID="wg7-f3-ORb">
@@ -221,7 +221,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="774" y="53"/>
+        </scene>
+        <!--Trending-->
+        <scene sceneID="m4J-0s-h8r">
+            <objects>
+                <viewController id="Dfd-Rv-27f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mwl-NE-x9J">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XO7-8T-3dh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Trending" image="trending-up" id="fhn-eu-HzG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9t-gi-wLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="723"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -235,16 +251,36 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Dfd-Rv-27f" kind="relationship" relationship="viewControllers" id="6Bb-qM-V2v"/>
+                        <segue destination="eV8-Ku-NSq" kind="relationship" relationship="viewControllers" id="F2R-h5-d8J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Bookmarks-->
+        <scene sceneID="QOA-R7-1Z4">
+            <objects>
+                <viewController id="eV8-Ku-NSq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1CV-lx-2k6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="asj-hv-ZE9"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="kbT-Z2-rh0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Bu-Q4-JUO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="1389"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="56" height="64"/>
+        <image name="bookmark.fill" catalog="system" width="56" height="64"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="rectangle.split.3x3.fill" catalog="system" width="64" height="46"/>
+        <image name="trending-up" width="28" height="28"/>
     </resources>
 </document>
