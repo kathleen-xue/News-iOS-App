@@ -295,10 +295,10 @@
             </objects>
             <point key="canvasLocation" x="773.91304347826087" y="-615.40178571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--Detailed Page View Controller-->
         <scene sceneID="boF-34-zqa">
             <objects>
-                <viewController id="xgs-Ve-tgE" sceneMemberID="viewController">
+                <viewController id="xgs-Ve-tgE" customClass="DetailedPageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GoY-pt-AFw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,7 +314,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roI-eB-aRf">
                                         <rect key="frame" x="8" y="309" width="398" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -333,13 +333,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-AE-vgS">
-                                        <rect key="frame" x="22" y="393" width="370" height="311"/>
+                                        <rect key="frame" x="22" y="393" width="370" height="283"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4M-qZ-GXJ">
+                                        <rect key="frame" x="22" y="684" width="370" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="oRU-HF-OqC"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="vW2-JJ-A8k"/>
@@ -349,6 +356,13 @@
                         <viewLayoutGuide key="safeArea" id="nKk-hD-2bq"/>
                     </view>
                     <navigationItem key="navigationItem" id="1qa-Gt-Gq0"/>
+                    <connections>
+                        <outlet property="detailedPageBody" destination="kDT-AE-vgS" id="5wy-yV-hpS"/>
+                        <outlet property="detailedPageDate" destination="N1H-DU-q9k" id="I4H-cf-JKu"/>
+                        <outlet property="detailedPageImg" destination="FPA-3E-Brt" id="ft4-V0-vnC"/>
+                        <outlet property="detailedPageSection" destination="Wbn-Pv-0rF" id="AxD-I0-mU2"/>
+                        <outlet property="detailedPageTitle" destination="roI-eB-aRf" id="ZPl-3R-Wtc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i70-yh-LY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
