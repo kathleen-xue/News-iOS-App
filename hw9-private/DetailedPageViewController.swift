@@ -23,7 +23,7 @@ class DetailedPageViewController: UIViewController {
     @IBOutlet weak var detailedPageBody: UILabel!
     @IBOutlet weak var detailedPageTitle: UILabel!
     @IBOutlet weak var detailedPageUrl: UIButton!
-    
+    @IBOutlet weak var detailedPageBackButton: UINavigationItem!
     var thumbnailData: String?
     var image: String = "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
     var newsTitle: String = ""
@@ -48,6 +48,7 @@ class DetailedPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
@@ -77,6 +78,7 @@ class DetailedPageViewController: UIViewController {
                 self.detailedPageBody.attributedText = bodyHtml
                 self.detailedPageDate.text = self.date
                 self.detailedPageSection.text = self.section
+                self.navigationController?.navigationBar.topItem?.title = self.newsTitle;
             })
         }
     }

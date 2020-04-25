@@ -413,6 +413,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1qa-Gt-Gq0"/>
                     <connections>
+                        <outlet property="detailedPageBackButton" destination="1qa-Gt-Gq0" id="6Uf-Op-keT"/>
                         <outlet property="detailedPageBody" destination="hpe-Ri-Ggo" id="ovo-3J-Uie"/>
                         <outlet property="detailedPageDate" destination="N1H-DU-q9k" id="I4H-cf-JKu"/>
                         <outlet property="detailedPageImg" destination="FPA-3E-Brt" id="ft4-V0-vnC"/>
