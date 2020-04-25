@@ -16,6 +16,7 @@ import Kingfisher
 
 class DetailedPageViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var detailedPageImg: UIImageView!
     @IBOutlet weak var detailedPageSection: UILabel!
     @IBOutlet weak var detailedPageDate: UILabel!
@@ -32,6 +33,11 @@ class DetailedPageViewController: UIViewController {
         super.viewDidLoad()
         self.view.translatesAutoresizingMaskIntoConstraints = true
     }
+    
+    /*override func viewDidLayoutSubviews() {
+        self.scrollView.isScrollEnabled = true
+        self.scrollView.contentSize = CGSize(width: 414, height: 1700) // height should be grater than scrollview's frame height
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
