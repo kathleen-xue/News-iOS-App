@@ -22,13 +22,20 @@ class DetailedPageViewController: UIViewController {
     @IBOutlet weak var detailedPageDate: UILabel!
     @IBOutlet weak var detailedPageBody: UILabel!
     @IBOutlet weak var detailedPageTitle: UILabel!
+    @IBOutlet weak var detailedPageUrl: UIButton!
+    
     var thumbnailData: String?
     var image: String = "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
     var newsTitle: String = ""
     var section: String = ""
     var date: String = ""
     var bodyText: String = ""
-    var url: String = ""
+    var url: String = "https://theguardian.com"
+    @IBAction func didTapUrl(sender: AnyObject) {
+        if let url = URL(string: self.url) {
+            UIApplication.shared.open(url)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.translatesAutoresizingMaskIntoConstraints = true
@@ -41,7 +48,6 @@ class DetailedPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("in view will appear")
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
@@ -56,6 +62,7 @@ class DetailedPageViewController: UIViewController {
                 let imgdata = try? Data(contentsOf: imgurl!)
                 self.detailedPageImg.image = UIImage(data: imgdata!)
                 self.detailedPageTitle.text = self.newsTitle
+                self.detailedPageUrl.addTarget(self, action: #selector(self.didTapUrl(sender:)), for: .touchUpInside)
                 let bodyHtml = self.bodyText.htmlAttributedString()
                 bodyHtml?.enumerateAttribute(.font, in: NSMakeRange(0, bodyHtml!.length), options: []) { value, range, stop in
                     guard let currentFont = value as? UIFont else {
