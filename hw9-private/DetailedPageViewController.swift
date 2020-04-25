@@ -30,6 +30,7 @@ class DetailedPageViewController: UIViewController {
     var url: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.translatesAutoresizingMaskIntoConstraints = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
