@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 import SwiftyJSON
 import CoreLocation
 import MapKit
@@ -75,24 +76,27 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         homeNewsTable.reloadData()
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
             case "ShowDetail":
-            guard let detailNewsController = segue.destination as? DetailedPageViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let detailNewsCell = sender as? HomeNewsTableCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            guard let indexPath = homeNewsTable.indexPath(for: detailNewsCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            let selectedNews = self.homeNewsData[indexPath.row]
-            detailNewsController.thumbnailData = [selectedNews]
-        default:
-            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+                os_log("showing more detail.", log: OSLog.default, type: .debug)
+                guard let detailNewsController = segue.destination as? DetailedPageViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let detailNewsCell = sender as? HomeNewsTableCell else {
+                    fatalError("Unexpected sender: \(String(describing: sender))")
+                }
+                guard let indexPath = homeNewsTable.indexPath(for: detailNewsCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                let idJSON = JSON(self.homeNewsData[indexPath.row])
+                let selectedNews = idJSON["id"].string
+                //print(selectedNews!)
+                detailNewsController.thumbnailData = selectedNews
+            default:
+                os_log("showing NO detail.", log: OSLog.default, type: .debug)
+                fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
     
