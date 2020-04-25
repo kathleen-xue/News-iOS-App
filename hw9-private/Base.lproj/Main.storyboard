@@ -298,7 +298,7 @@
         <!--Detailed Page View Controller-->
         <scene sceneID="boF-34-zqa">
             <objects>
-                <viewController id="xgs-Ve-tgE" customClass="DetailedPageViewController" sceneMemberID="viewController">
+                <viewController id="xgs-Ve-tgE" customClass="DetailedPageViewController" customModule="hw9_private" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GoY-pt-AFw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,19 +332,18 @@
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDT-AE-vgS">
-                                        <rect key="frame" x="22" y="393" width="370" height="283"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4M-qZ-GXJ">
                                         <rect key="frame" x="22" y="684" width="370" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="100" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpe-Ri-Ggo">
+                                        <rect key="frame" x="22" y="383" width="370" height="293"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -357,7 +356,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1qa-Gt-Gq0"/>
                     <connections>
-                        <outlet property="detailedPageBody" destination="kDT-AE-vgS" id="5wy-yV-hpS"/>
+                        <outlet property="detailedPageBody" destination="hpe-Ri-Ggo" id="ovo-3J-Uie"/>
                         <outlet property="detailedPageDate" destination="N1H-DU-q9k" id="I4H-cf-JKu"/>
                         <outlet property="detailedPageImg" destination="FPA-3E-Brt" id="ft4-V0-vnC"/>
                         <outlet property="detailedPageSection" destination="Wbn-Pv-0rF" id="AxD-I0-mU2"/>

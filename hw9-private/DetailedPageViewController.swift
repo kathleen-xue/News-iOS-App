@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import os.log
 import SwiftyJSON
 import CoreLocation
 import MapKit
@@ -18,10 +19,13 @@ class DetailedPageViewController: UIViewController {
     @IBOutlet weak var detailedPageImg: UIImageView!
     @IBOutlet weak var detailedPageSection: UILabel!
     @IBOutlet weak var detailedPageDate: UILabel!
-    @IBOutlet weak var detailedPageBody: UITextView!
+    @IBOutlet weak var detailedPageBody: UILabel!
     @IBOutlet weak var detailedPageTitle: UILabel!
-    
+    var thumbnailData: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let thumbnailData = thumbnailData {
+            print(thumbnailData)
+        }
     }
 }

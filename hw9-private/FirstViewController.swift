@@ -75,6 +75,27 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         homeNewsTable.reloadData()
     }
     
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        super.prepare(for: segue, sender: sender)
+        switch(segue.identifier ?? "") {
+            case "ShowDetail":
+            guard let detailNewsController = segue.destination as? DetailedPageViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let detailNewsCell = sender as? HomeNewsTableCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            guard let indexPath = homeNewsTable.indexPath(for: detailNewsCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            let selectedNews = self.homeNewsData[indexPath.row]
+            detailNewsController.thumbnailData = [selectedNews]
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
+    }
+    
     /*func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
 
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
