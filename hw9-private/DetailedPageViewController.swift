@@ -52,11 +52,22 @@ class DetailedPageViewController: UIViewController {
                 self.bodyText = data["bodyText"] ?? "None"
                 self.url = data["url"] ?? "https://theguardian.com"
                 let imgurl = URL(string: self.image)
-                print()
+                
                 let imgdata = try? Data(contentsOf: imgurl!)
                 self.detailedPageImg.image = UIImage(data: imgdata!)
                 self.detailedPageTitle.text = self.newsTitle
-                self.detailedPageBody.attributedText = self.bodyText.htmlAttributedString()
+                let bodyHtml = self.bodyText.htmlAttributedString()
+                bodyHtml?.enumerateAttribute(.font, in: NSMakeRange(0, bodyHtml!.length), options: []) { value, range, stop in
+                    guard let currentFont = value as? UIFont else {
+                        return
+                    }
+                    let fontDescriptor = currentFont.fontDescriptor.addingAttributes([.family: "Helvetica"])
+                    if let newFontDescriptor = fontDescriptor.matchingFontDescriptors(withMandatoryKeys: [.family]).first {
+                        let newFont = UIFont(descriptor: newFontDescriptor, size: currentFont.pointSize)
+                        bodyHtml!.addAttributes([.font: newFont], range: range)
+                    }
+                }
+                self.detailedPageBody.attributedText = bodyHtml
                 self.detailedPageDate.text = self.date
                 self.detailedPageSection.text = self.section
             })
@@ -65,11 +76,11 @@ class DetailedPageViewController: UIViewController {
 }
 
 extension String {
-    func htmlAttributedString() -> NSAttributedString? {
+    func htmlAttributedString() -> NSMutableAttributedString? {
         guard let data = self.data(using: String.Encoding.utf16, allowLossyConversion: false) else { return nil }
         guard let html = try? NSMutableAttributedString(
             data: data,
-            options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
+            options: [NSMutableAttributedString.DocumentReadingOptionKey.documentType: NSMutableAttributedString.DocumentType.html],
             documentAttributes: nil) else { return nil }
         return html
     }
