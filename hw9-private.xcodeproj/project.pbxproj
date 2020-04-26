@@ -12,6 +12,7 @@
 		9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA392453828700E28AFF /* DetailedPageViewController.swift */; };
 		9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */; };
 		9151DA3E245500DB00E28AFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3D245500DB00E28AFF /* SearchViewController.swift */; };
+		9151DA4024555E5D00E28AFF /* SearchResultsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3F24555E5B00E28AFF /* SearchResultsPageController.swift */; };
 		915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7B24453CE00097F645 /* AppDelegate.swift */; };
 		915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7D24453CE00097F645 /* SceneDelegate.swift */; };
 		915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7F24453CE00097F645 /* FirstViewController.swift */; };
@@ -54,6 +55,7 @@
 		9151DA392453828700E28AFF /* DetailedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewController.swift; sourceTree = "<group>"; };
 		9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsGetter.swift; sourceTree = "<group>"; };
 		9151DA3D245500DB00E28AFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9151DA3F24555E5B00E28AFF /* SearchResultsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPageController.swift; sourceTree = "<group>"; };
 		915CEF7824453CE00097F645 /* hw9-private.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hw9-private.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CEF7B24453CE00097F645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		915CEF7D24453CE00097F645 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				915CEF7F24453CE00097F645 /* FirstViewController.swift */,
 				9151DA392453828700E28AFF /* DetailedPageViewController.swift */,
 				915CEF8124453CE00097F645 /* SecondViewController.swift */,
+				9151DA3F24555E5B00E28AFF /* SearchResultsPageController.swift */,
 				915CEF8324453CE00097F645 /* Main.storyboard */,
 				915CEF8624453CE30097F645 /* Assets.xcassets */,
 				915CEF8824453CE30097F645 /* LaunchScreen.storyboard */,
@@ -440,6 +443,7 @@
 				9183061D244BF8A0001938E1 /* HomeNewsGetter.swift in Sources */,
 				915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */,
 				915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */,
+				9151DA4024555E5D00E28AFF /* SearchResultsPageController.swift in Sources */,
 				9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */,
 				915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */,
 			);

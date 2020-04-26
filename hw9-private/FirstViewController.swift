@@ -31,6 +31,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     let homeNews = HomeNewsGetter()
     let searchController = SearchViewController()
     var searchData = [String]()
+    var searchQuery = ""
     
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -93,6 +94,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         self.dismiss(animated: true)
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.searchQuery = searchBar.text ?? ""
+        self.dismiss(animated: true)
+        self.performSegue(withIdentifier: "SearchResultsPage", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
@@ -111,6 +118,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 let selectedNews = idJSON["id"].string
                 //print(selectedNews!)
                 detailNewsController.thumbnailData = selectedNews
+            
+            case "SearchResultsPage":
+                guard let searchResultsController = segue.destination as? SearchResultsPageController else {
+                        fatalError("Unexpected destination: \(segue.destination)")
+                    }
+                searchResultsController.searchQuery = self.searchQuery
+            
             default:
                 os_log("showing NO detail.", log: OSLog.default, type: .debug)
                 fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
