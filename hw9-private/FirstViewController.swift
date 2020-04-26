@@ -97,14 +97,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchQuery = searchBar.text ?? ""
         self.dismiss(animated: true)
-        let viewController = SearchResultsPageController()
-        viewController.searchQuery = self.searchQuery
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let searchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsPageController") as! SearchResultsPageController
+        searchVC.searchQuery = self.searchQuery
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    /*func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         
-    }
+    }*/
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

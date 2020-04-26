@@ -406,117 +406,29 @@
         <!--Search Results Page Controller-->
         <scene sceneID="G5I-dI-43a">
             <objects>
-                <viewController id="dTe-ju-AoR" customClass="SearchResultsPageController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultsPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dTe-ju-AoR" customClass="SearchResultsPageController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAa-yL-nis">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlX-iI-QaE">
-                                <rect key="frame" x="20" y="100" width="259" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Results" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlX-iI-QaE">
+                                <rect key="frame" x="19" y="94" width="259" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="YJa-ht-SrV"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Search Results">
-                                        <attributes>
-                                            <font key="NSFont" size="36" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RnX-bu-C02">
-                                <rect key="frame" x="20" y="145" width="374" height="677"/>
+                                <rect key="frame" x="20" y="140" width="374" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="677" id="2Fb-gV-jsd"/>
+                                    <constraint firstAttribute="height" constant="682" id="2Fb-gV-jsd"/>
                                 </constraints>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="VLS-JA-mzW">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mK1-d1-ynP">
-                                            <rect key="frame" x="20" y="-95.5" width="192" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" id="Wus-DL-EqN" userLabel="width ≥ 250"/>
-                                            </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="City">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="24" name="Helvetica-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dR-wV-5Ek">
-                                            <rect key="frame" x="179" y="51" width="178" height="49"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Temperature">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="24" name="Helvetica-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1A-ob-0oF">
-                                            <rect key="frame" x="20" y="-35" width="100" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="V4H-RH-lUa"/>
-                                                <constraint firstAttribute="height" constant="25" id="a4c-rK-HTb"/>
-                                            </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="State">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="16" name="Helvetica-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zz-xx-UWW">
-                                            <rect key="frame" x="223" y="-28.5" width="134" height="18.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="DHR-0r-i0E"/>
-                                            </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Weather Features">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="16" name="Helvetica-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <constraints>
-                                        <constraint firstItem="9zz-xx-UWW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J1A-ob-0oF" secondAttribute="trailing" constant="8" symbolic="YES" id="JFS-p0-Whv"/>
-                                        <constraint firstItem="5dR-wV-5Ek" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mK1-d1-ynP" secondAttribute="trailing" constant="-33" id="Vw3-LE-ZT7"/>
-                                        <constraint firstAttribute="trailing" secondItem="9zz-xx-UWW" secondAttribute="trailing" constant="17" id="aIh-bh-Q62"/>
-                                        <constraint firstAttribute="trailing" secondItem="5dR-wV-5Ek" secondAttribute="trailing" constant="17" id="amI-Om-Xd4"/>
-                                        <constraint firstItem="J1A-ob-0oF" firstAttribute="leading" secondItem="VLS-JA-mzW" secondAttribute="leading" constant="20" id="d7a-t0-9XC"/>
-                                        <constraint firstAttribute="bottom" secondItem="J1A-ob-0oF" secondAttribute="bottom" constant="20" id="ev2-M2-wOh"/>
-                                        <constraint firstItem="9zz-xx-UWW" firstAttribute="top" secondItem="5dR-wV-5Ek" secondAttribute="bottom" constant="100" id="rcB-Sb-4Mv"/>
-                                        <constraint firstItem="mK1-d1-ynP" firstAttribute="leading" secondItem="VLS-JA-mzW" secondAttribute="leading" constant="20" id="vCf-TJ-2uq"/>
-                                        <constraint firstAttribute="bottom" secondItem="9zz-xx-UWW" secondAttribute="bottom" constant="20" id="w4t-n8-O7N"/>
-                                        <constraint firstItem="J1A-ob-0oF" firstAttribute="top" secondItem="mK1-d1-ynP" secondAttribute="bottom" constant="32.5" id="zOz-Ux-iHT"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCell" rowHeight="100" id="ZWN-ej-VRH" userLabel="searchResultsCell" customClass="SearchResultsTableCell" customModule="hw9_private" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="374" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZWN-ej-VRH" id="gIW-To-vjc">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -536,8 +448,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhR-UJ-7x8" userLabel="Search Results Table Time">
-                                                    <rect key="frame" x="109" y="79" width="89" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhR-UJ-7x8" userLabel="Search Results Table Time">
+                                                    <rect key="frame" x="109" y="79" width="28.5" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -595,27 +507,37 @@
                                 </prototypes>
                                 <sections/>
                                 <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="PWb-I8-RfS"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="hQQ-aG-9zS"/>
+                                    <outlet property="dataSource" destination="dTe-ju-AoR" id="A59-ca-J5I"/>
+                                    <outlet property="delegate" destination="dTe-ju-AoR" id="gfx-3C-2no"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sxm-ga-AIo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="YfD-aE-Sd1"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="RnX-bu-C02" firstAttribute="trailing" secondItem="RAa-yL-nis" secondAttribute="trailingMargin" id="4Eh-64-PjW"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HlX-iI-QaE" secondAttribute="trailing" constant="20" symbolic="YES" id="Duz-V5-9x2"/>
                             <constraint firstItem="RnX-bu-C02" firstAttribute="leading" secondItem="RAa-yL-nis" secondAttribute="leadingMargin" id="JJS-Xm-akU"/>
-                            <constraint firstItem="jdr-lZ-htJ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HlX-iI-QaE" secondAttribute="trailing" symbolic="YES" id="M2t-uM-epq"/>
-                            <constraint firstItem="RnX-bu-C02" firstAttribute="top" secondItem="HlX-iI-QaE" secondAttribute="bottom" constant="6" id="XY7-YN-ghf"/>
+                            <constraint firstItem="HlX-iI-QaE" firstAttribute="leading" secondItem="RAa-yL-nis" secondAttribute="leadingMargin" constant="-1" id="msf-gK-B5Z"/>
                             <constraint firstItem="jdr-lZ-htJ" firstAttribute="bottom" secondItem="RnX-bu-C02" secondAttribute="bottom" constant="40" id="nDx-aH-bcN"/>
-                            <constraint firstItem="HlX-iI-QaE" firstAttribute="leading" secondItem="RnX-bu-C02" secondAttribute="leading" id="ptx-oN-qEj"/>
+                            <constraint firstItem="HlX-iI-QaE" firstAttribute="top" secondItem="RAa-yL-nis" secondAttribute="top" constant="94" id="yrX-Wx-ty8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jdr-lZ-htJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="don-LD-YLr"/>
+                    <connections>
+                        <outlet property="header" destination="HlX-iI-QaE" id="aBG-Ad-qDM"/>
+                        <outlet property="searchResultsTable" destination="RnX-bu-C02" id="LLA-Lz-Jx9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFO-rx-Cjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2699" y="-1264"/>
+            <point key="canvasLocation" x="2238" y="-1264"/>
         </scene>
         <!--Detailed Page View Controller-->
         <scene sceneID="boF-34-zqa">
