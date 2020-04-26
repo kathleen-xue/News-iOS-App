@@ -73,4 +73,8 @@ class SearchViewController: UITableViewController {
         cell.textLabel?.text = word
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.text = self.data[indexPath.item]
+    }
 }
