@@ -13,7 +13,7 @@ import CoreLocation
 import MapKit
 import Kingfisher
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate  {
+class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate  {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var weatherApiImg: UIImageView!
     @IBOutlet weak var weatherApiCity: UILabel!
@@ -29,6 +29,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var locationLon = -122.14
     var homeNewsData = [Any]()
     let homeNews = HomeNewsGetter()
+    let searchController = SearchViewController()
     
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -74,6 +75,16 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         homeNewsTable.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchController.searchBar.delegate = self
+        self.present(UINavigationController(rootViewController: searchController), animated: false, completion: nil)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.searchBar.text = ""
+        self.dismiss(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

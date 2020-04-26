@@ -11,6 +11,7 @@
 		9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */; };
 		9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA392453828700E28AFF /* DetailedPageViewController.swift */; };
 		9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */; };
+		9151DA3E245500DB00E28AFF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3D245500DB00E28AFF /* SearchViewController.swift */; };
 		915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7B24453CE00097F645 /* AppDelegate.swift */; };
 		915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7D24453CE00097F645 /* SceneDelegate.swift */; };
 		915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915CEF7F24453CE00097F645 /* FirstViewController.swift */; };
@@ -52,6 +53,7 @@
 		9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableCell.swift; sourceTree = "<group>"; };
 		9151DA392453828700E28AFF /* DetailedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewController.swift; sourceTree = "<group>"; };
 		9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsGetter.swift; sourceTree = "<group>"; };
+		9151DA3D245500DB00E28AFF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		915CEF7824453CE00097F645 /* hw9-private.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hw9-private.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CEF7B24453CE00097F645 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		915CEF7D24453CE00097F645 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				915CEF7B24453CE00097F645 /* AppDelegate.swift */,
 				915CEF7D24453CE00097F645 /* SceneDelegate.swift */,
+				9151DA3D245500DB00E28AFF /* SearchViewController.swift */,
 				915CEF7F24453CE00097F645 /* FirstViewController.swift */,
 				9151DA392453828700E28AFF /* DetailedPageViewController.swift */,
 				915CEF8124453CE00097F645 /* SecondViewController.swift */,
@@ -429,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9151DA3E245500DB00E28AFF /* SearchViewController.swift in Sources */,
 				915CEF8224453CE00097F645 /* SecondViewController.swift in Sources */,
 				9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */,
 				9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */,
