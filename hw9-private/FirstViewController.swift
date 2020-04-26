@@ -30,6 +30,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var homeNewsData = [Any]()
     let homeNews = HomeNewsGetter()
     let searchController = SearchViewController()
+    var searchData = [String]()
     
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -80,8 +81,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchController.searchBar.delegate = self
         self.present(UINavigationController(rootViewController: searchController), animated: false, completion: nil)
+        
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchController.autosuggest(query: searchText)
+    }
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchController.searchBar.text = ""
         self.dismiss(animated: true)
