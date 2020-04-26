@@ -24,7 +24,7 @@ class DetailedPageViewController: UIViewController {
     @IBOutlet weak var detailedPageTitle: UILabel!
     @IBOutlet weak var detailedPageUrl: UIButton!
     @IBOutlet weak var detailedPageBackButton: UINavigationItem!
-    var thumbnailData: String?
+    var thumbnailData: String? //article id
     var image: String = "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
     var newsTitle: String = ""
     var section: String = ""

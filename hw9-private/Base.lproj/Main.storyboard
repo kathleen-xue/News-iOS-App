@@ -465,6 +465,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhR-UJ-7x8" userLabel="Search Results Table Time">
                                                     <rect key="frame" x="111" y="78" width="124" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -514,7 +515,7 @@
         <!--Detailed Page View Controller-->
         <scene sceneID="boF-34-zqa">
             <objects>
-                <viewController id="xgs-Ve-tgE" customClass="DetailedPageViewController" customModule="hw9_private" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xgs-Ve-tgE" customClass="DetailedPageViewController" customModule="hw9_private" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GoY-pt-AFw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
