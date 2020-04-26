@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Kingfisher
 
 class SearchResultsPageController : UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -45,6 +46,18 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell", for: indexPath) as! SearchResultsTableCell
         let jsonData = JSON(self.data[indexPath.item])
+        if let imgArr = jsonData["blocks"]["main"]["elements"][0]["assets"].array {
+            if imgArr.count > 0 {
+                let jsonImg = JSON(imgArr[imgArr.count - 1])
+                let url = URL(string: jsonImg["file"].stringValue)
+                cell.searchResultsTableImg?.kf.setImage(with: url)
+            } else {
+                cell.searchResultsTableImg.kf.setImage(with: URL(string: "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"))
+            }
+        }
+        else {
+            cell.searchResultsTableImg.kf.setImage(with: URL(string: "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"))
+        }
         cell.searchResultsTableTitle.text = jsonData["webTitle"].stringValue
         cell.searchResultsTableSection.text = jsonData["sectionId"].stringValue
         cell.searchResultsTableTime.text = jsonData["webPublicationDate"].stringValue
