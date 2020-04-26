@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1676FFECCF09F6AAC0B952B6 /* Pods_hw9_privateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C2498ABAC7C433E5EAE1B4 /* Pods_hw9_privateTests.framework */; };
+		910CDB642455659E00A261BC /* SearchResultsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CDB632455659E00A261BC /* SearchResultsTableCell.swift */; };
 		9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */; };
 		9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA392453828700E28AFF /* DetailedPageViewController.swift */; };
 		9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */; };
@@ -51,6 +52,7 @@
 		2F1AD673D78203A584CE77E3 /* Pods-hw9-private.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private.release.xcconfig"; path = "Target Support Files/Pods-hw9-private/Pods-hw9-private.release.xcconfig"; sourceTree = "<group>"; };
 		46012F6177825B2736886F9A /* Pods-hw9-privateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-privateTests.debug.xcconfig"; path = "Target Support Files/Pods-hw9-privateTests/Pods-hw9-privateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		656C063CD392D5AA72D4E230 /* Pods-hw9-private.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9-private.debug.xcconfig"; path = "Target Support Files/Pods-hw9-private/Pods-hw9-private.debug.xcconfig"; sourceTree = "<group>"; };
+		910CDB632455659E00A261BC /* SearchResultsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableCell.swift; sourceTree = "<group>"; };
 		9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableCell.swift; sourceTree = "<group>"; };
 		9151DA392453828700E28AFF /* DetailedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewController.swift; sourceTree = "<group>"; };
 		9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsGetter.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */,
 				9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */,
 				9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */,
+				910CDB632455659E00A261BC /* SearchResultsTableCell.swift */,
 			);
 			path = "hw9-private";
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				9151DA4024555E5D00E28AFF /* SearchResultsPageController.swift in Sources */,
 				9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */,
 				915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */,
+				910CDB642455659E00A261BC /* SearchResultsTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

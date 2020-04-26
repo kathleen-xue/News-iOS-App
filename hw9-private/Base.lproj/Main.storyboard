@@ -107,9 +107,12 @@
                                         <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Enter keyword..." id="NFk-ZU-53E">
                                             <rect key="frame" x="-8" y="-6" width="389" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <outlet property="delegate" destination="9pv-A4-QxB" id="aVv-UG-Uyo"/>
+                                                <outletCollection property="gestureRecognizers" destination="qoN-G7-NUA" appends="YES" id="Qvj-qZ-Rgo"/>
+                                                <outletCollection property="gestureRecognizers" destination="jC8-ym-td5" appends="YES" id="rbx-g3-WMY"/>
                                             </connections>
                                         </searchBar>
                                     </subviews>
@@ -243,8 +246,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bby-lR-ORz"/>
+                <tapGestureRecognizer id="qoN-G7-NUA"/>
+                <gestureRecognizer id="jC8-ym-td5"/>
             </objects>
-            <point key="canvasLocation" x="1684.057971014493" y="-615.40178571428567"/>
+            <point key="canvasLocation" x="1674" y="-548"/>
         </scene>
         <!--Headlines-->
         <scene sceneID="wg7-f3-ORb">
@@ -396,12 +401,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5y-bN-wVp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="-1263"/>
+            <point key="canvasLocation" x="1326" y="-1264"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Results Page Controller-->
         <scene sceneID="G5I-dI-43a">
             <objects>
-                <viewController id="dTe-ju-AoR" sceneMemberID="viewController">
+                <viewController id="dTe-ju-AoR" customClass="SearchResultsPageController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAa-yL-nis">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -421,18 +426,18 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FirstViewController" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RnX-bu-C02">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RnX-bu-C02">
                                 <rect key="frame" x="20" y="145" width="374" height="677"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="677" id="2Fb-gV-jsd"/>
                                 </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="VLS-JA-mzW">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mK1-d1-ynP">
-                                            <rect key="frame" x="20" y="-55.5" width="192" height="28"/>
+                                            <rect key="frame" x="20" y="-95.5" width="192" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" id="Wus-DL-EqN" userLabel="width ≥ 250"/>
                                             </constraints>
@@ -462,7 +467,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1A-ob-0oF">
-                                            <rect key="frame" x="20" y="5" width="100" height="25"/>
+                                            <rect key="frame" x="20" y="-35" width="100" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="V4H-RH-lUa"/>
                                                 <constraint firstAttribute="height" constant="25" id="a4c-rK-HTb"/>
@@ -479,7 +484,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zz-xx-UWW">
-                                            <rect key="frame" x="223" y="11.5" width="134" height="18.5"/>
+                                            <rect key="frame" x="223" y="-28.5" width="134" height="18.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="DHR-0r-i0E"/>
                                             </constraints>
@@ -494,14 +499,6 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Enter keyword..." id="qoC-Zo-m25">
-                                            <rect key="frame" x="-8" y="-6" width="389" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="9pv-A4-QxB" id="sEG-aj-GvV"/>
-                                            </connections>
-                                        </searchBar>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
@@ -518,8 +515,8 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeNewsCell" rowHeight="100" id="ZWN-ej-VRH" userLabel="searchResultsCell" customClass="HomeNewsTableCell" customModule="hw9_private" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="374" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCell" rowHeight="100" id="ZWN-ej-VRH" userLabel="searchResultsCell" customClass="SearchResultsTableCell" customModule="hw9_private" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="38" width="374" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZWN-ej-VRH" id="gIW-To-vjc">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
@@ -589,10 +586,10 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="homeNewsTableImg" destination="TIf-Q3-neM" id="zsm-EN-Cie"/>
-                                            <outlet property="homeNewsTableSection" destination="7HW-bZ-mvd" id="th0-FW-Zg9"/>
-                                            <outlet property="homeNewsTableTime" destination="lhR-UJ-7x8" id="bMf-Ow-IMd"/>
-                                            <outlet property="homeNewsTableTitle" destination="GeW-Ca-kBO" id="g0D-Gy-zmk"/>
+                                            <outlet property="searchResultsTableImg" destination="TIf-Q3-neM" id="JDG-ug-z8I"/>
+                                            <outlet property="searchResultsTableSection" destination="7HW-bZ-mvd" id="CAL-Pd-v9E"/>
+                                            <outlet property="searchResultsTableTime" destination="lhR-UJ-7x8" id="LiK-4j-rh4"/>
+                                            <outlet property="searchResultsTableTitle" destination="GeW-Ca-kBO" id="w6u-gU-kkv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -614,10 +611,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jdr-lZ-htJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="don-LD-YLr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFO-rx-Cjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702.898550724638" y="-1264.2857142857142"/>
+            <point key="canvasLocation" x="2699" y="-1264"/>
         </scene>
         <!--Detailed Page View Controller-->
         <scene sceneID="boF-34-zqa">

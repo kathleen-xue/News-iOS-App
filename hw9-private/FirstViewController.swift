@@ -94,10 +94,16 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         self.dismiss(animated: true)
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchQuery = searchBar.text ?? ""
         self.dismiss(animated: true)
-        self.performSegue(withIdentifier: "SearchResultsPage", sender: self)
+        let viewController = SearchResultsPageController()
+        viewController.searchQuery = self.searchQuery
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -119,12 +125,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 //print(selectedNews!)
                 detailNewsController.thumbnailData = selectedNews
             
-            case "SearchResultsPage":
-                guard let searchResultsController = segue.destination as? SearchResultsPageController else {
-                        fatalError("Unexpected destination: \(segue.destination)")
+            /*case "SearchResultsPage":
+                if let navVC = segue.destination as? UINavigationController{
+                    if let searchResultsController = navVC.children[0] as? SearchResultsPageController{
+                        searchResultsController.searchQuery = self.searchQuery
                     }
-                searchResultsController.searchQuery = self.searchQuery
-            
+                }
+            */
             default:
                 os_log("showing NO detail.", log: OSLog.default, type: .debug)
                 fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")

@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
-class SearchResultsPageController : UITableViewController {
+class SearchResultsPageController : UIViewController {
     var searchQuery = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("in searchresults page controller" )
+        print(searchQuery)
     }
 }
