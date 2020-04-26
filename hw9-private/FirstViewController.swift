@@ -12,6 +12,7 @@ import SwiftyJSON
 import CoreLocation
 import MapKit
 import Kingfisher
+import SwiftSpinner
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate  {
     @IBOutlet weak var searchBar: UISearchBar!
@@ -65,13 +66,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         weatherApiImg.layer.cornerRadius = weatherApiImg.frame.height/8.0
         weatherApiImg.clipsToBounds = true
-        
+        SwiftSpinner.show("Loading Home Page...")
         homeNews.getHomeNews(completion: { (data) -> Void in
             //print(data)
             self.homeNewsData = data
             self.homeNewsTable.reloadData()
+            SwiftSpinner.hide()
         })
         refreshControl.addTarget(self, action: #selector(refreshHomeNews(_:)), for: .valueChanged)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

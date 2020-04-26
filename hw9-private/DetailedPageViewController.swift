@@ -13,6 +13,7 @@ import SwiftyJSON
 import CoreLocation
 import MapKit
 import Kingfisher
+import SwiftSpinner
 
 class DetailedPageViewController: UIViewController {
     
@@ -46,9 +47,13 @@ class DetailedPageViewController: UIViewController {
         self.scrollView.contentSize = CGSize(width: 414, height: 1700) // height should be grater than scrollview's frame height
     }*/
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        SwiftSpinner.show("Loading Article...")
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
@@ -78,7 +83,8 @@ class DetailedPageViewController: UIViewController {
                 self.detailedPageBody.attributedText = bodyHtml
                 self.detailedPageDate.text = self.date
                 self.detailedPageSection.text = self.section
-                self.navigationController?.navigationBar.topItem?.title = self.newsTitle;
+                self.navigationController?.navigationBar.topItem?.title = self.newsTitle
+                SwiftSpinner.hide()
             })
         }
     }
