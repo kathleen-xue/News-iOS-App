@@ -51,10 +51,12 @@ class SearchViewController: UITableViewController {
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 let suggestionArr = swiftyJsonVar["suggestionGroups"][0]["searchSuggestions"]
-                for i in 0...suggestionArr.count - 1 {
-                    let cur = JSON(suggestionArr[i])
-                    let str = cur["displayText"].stringValue
-                    self.data.append(str)
+                if suggestionArr.count > 0 {
+                    for i in 0...suggestionArr.count - 1 {
+                        let cur = JSON(suggestionArr[i])
+                        let str = cur["displayText"].stringValue
+                        self.data.append(str)
+                    }
                 }
                 self.tableView.reloadData()
             }

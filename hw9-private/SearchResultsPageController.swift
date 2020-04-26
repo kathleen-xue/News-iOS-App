@@ -16,15 +16,20 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var searchResultsTable: UITableView!
     var searchQuery = ""
-    
+    let getter = SearchResultsGetter()
+    var data = [Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
         searchResultsTable.dataSource = self
         searchResultsTable.delegate = self
-        searchResultsTable.reloadData()
+        
         print("in searchresults page controller" )
         print(searchQuery)
-        searchUrl = searchUrl + searchQuery
+        getter.getSearchResults(query: searchQuery, completion: {(data) -> Void in
+            self.data = data
+            print(data)
+            self.searchResultsTable.reloadData()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,11 +39,15 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell", for: indexPath) as! SearchResultsTableCell
+        let jsonData = JSON(self.data[indexPath.item])
+        cell.searchResultsTableTitle.text = jsonData["webTitle"].stringValue
+        cell.searchResultsTableSection.text = jsonData["sectionId"].stringValue
+        cell.searchResultsTableTime.text = jsonData["webPublicationDate"].stringValue
         return cell
     }
     
