@@ -26,6 +26,7 @@ class HomeNewsTableCell: UITableViewCell {
         self.layer.cornerRadius = 10
         self.homeNewsTableImg.layer.cornerRadius = 10
         self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
+        //self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchDown)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +38,7 @@ class HomeNewsTableCell: UITableViewCell {
     @IBAction func bookmarkButtonTapped(_ sender: UIButton){
       // if the closure is defined (not nil)
       // then execute the code inside the subscribeButtonAction closure
+        print("tappeddddd")
       bookmarkButtonAction?()
     }
     
