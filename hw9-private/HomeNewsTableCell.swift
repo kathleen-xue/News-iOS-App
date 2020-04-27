@@ -13,6 +13,8 @@ class HomeNewsTableCell: UITableViewCell {
     @IBOutlet weak var homeNewsTableTime: UILabel!
     @IBOutlet weak var homeNewsTableSection: UILabel!
     @IBOutlet weak var homeNewsTableTitle: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    var bookmarkButtonAction : (() -> ())?
     override func awakeFromNib() {
      //still empty yet
         super.awakeFromNib()
@@ -21,12 +23,19 @@ class HomeNewsTableCell: UITableViewCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 10
         self.homeNewsTableImg.layer.cornerRadius = 10
+        self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func bookmarkButtonTapped(_ sender: UIButton){
+      // if the closure is defined (not nil)
+      // then execute the code inside the subscribeButtonAction closure
+      bookmarkButtonAction?()
     }
     
     override var frame: CGRect {

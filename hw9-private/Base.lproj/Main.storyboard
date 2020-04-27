@@ -175,6 +175,7 @@
                                                     <gestureRecognizers/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
                                                     <connections>
+                                                        <action selector="bookmarkButtonTapped:" destination="NnV-Cn-2rI" eventType="touchUpInside" id="gdg-Cj-UxF"/>
                                                         <outletCollection property="gestureRecognizers" destination="VbX-Ku-HUs" appends="YES" id="hxw-YY-Flm"/>
                                                     </connections>
                                                 </button>
@@ -204,6 +205,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="EIH-hU-SMJ" id="GSj-AA-Meb"/>
                                             <outlet property="homeNewsTableImg" destination="5sg-DK-EOZ" id="MUz-fe-HpA"/>
                                             <outlet property="homeNewsTableSection" destination="S19-ef-T6z" id="7An-Tq-kaI"/>
                                             <outlet property="homeNewsTableTime" destination="XIQ-kA-4jQ" id="ptb-Qd-idL"/>
