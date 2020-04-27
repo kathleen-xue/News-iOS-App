@@ -55,7 +55,8 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeadlineSectionCell", for: indexPath) as! HeadlineSectionCell
         let jsonData = JSON(self.data[indexPath.item])
-        cell.headlineSectionImg?.kf.setImage(with: URL(string: jsonData["img"].stringValue), placeholder: UIImage(named: "default-guardian"))
+        let thumbUrl = URL(string: jsonData["img"].stringValue)
+        cell.headlineSectionImg?.kf.setImage(with: thumbUrl, placeholder: UIImage(named: "default-guardian"))
         cell.headlineSectionTitle.text = jsonData["title"].stringValue
         cell.headlineSectionSection.text = jsonData["section"].stringValue
         cell.headlineSectionDate.text = jsonData["date"].stringValue

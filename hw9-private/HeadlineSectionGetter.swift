@@ -39,8 +39,9 @@ class HeadlineSectionGetter {
                                 let jsonImg = JSON(imgArray[imgArray.count - 1])
                                 let imgUrl = jsonImg["file"].stringValue
                                 img = imgUrl
+                                print(img)
                             } else {
-                                img = "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
+                                img = ""
                             }
                             self.data.append(["id": id, "title": title, "section": section, "url": webUrl, "date": dateAgo, "img": img])
                         }

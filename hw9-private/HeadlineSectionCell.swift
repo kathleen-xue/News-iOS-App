@@ -22,6 +22,7 @@ class HeadlineSectionCell: UITableViewCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 10
         self.headlineSectionImg.layer.cornerRadius = 10
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
