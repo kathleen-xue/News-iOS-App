@@ -20,7 +20,8 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     var section = ""
     var data = [Any]()
     override func viewDidLoad() {
-        SwiftSpinner.show("Loading \(String(describing: self.section.uppercased)) Headlines...")
+        let sectionName = self.section.uppercased()
+        SwiftSpinner.show("Loading \(sectionName) Headlines...")
         super.viewDidLoad()
         headlineSectionTable.dataSource = self
         headlineSectionTable.delegate = self
