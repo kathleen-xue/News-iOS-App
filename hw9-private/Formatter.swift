@@ -28,4 +28,13 @@ class Formatter {
         dateAgo = "\(string) ago"
         return dateAgo
     }
+    
+    func formatTraditionalDate(date: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let showDate = inputFormatter.date(from: date)
+        inputFormatter.dateFormat = "dd MMM, yyyy"
+        let resultString = inputFormatter.string(from: showDate!)
+        return resultString
+    }
 }

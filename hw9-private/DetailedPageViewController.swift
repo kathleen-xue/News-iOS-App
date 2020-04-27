@@ -32,6 +32,7 @@ class DetailedPageViewController: UIViewController {
     var date: String = ""
     var bodyText: String = ""
     var url: String = "https://theguardian.com"
+    let formatter = Formatter()
     @IBAction func didTapUrl(sender: AnyObject) {
         if let url = URL(string: self.url) {
             UIApplication.shared.open(url)
@@ -57,16 +58,20 @@ class DetailedPageViewController: UIViewController {
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
-                self.image = data["image"] ?? "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
+                let jsonData = JSON(data)
+                self.image = jsonData["image"].string ??  "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
+               // print(self.image)
                 self.newsTitle = data["title"] ?? "None"
                 self.section = data["section"] ?? "None"
                 self.date = data["date"] ?? "None"
                 self.bodyText = data["bodyText"] ?? "None"
                 self.url = data["url"] ?? "https://theguardian.com"
-                let imgurl = URL(string: self.image)
-                
-                let imgdata = try? Data(contentsOf: imgurl!)
-                self.detailedPageImg.image = UIImage(data: imgdata!)
+                var imgurl = URL(string: self.image)
+               
+                if imgurl == nil {
+                    imgurl = URL(string: "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png")
+                }
+                self.detailedPageImg.kf.setImage(with: imgurl)
                 self.detailedPageTitle.text = self.newsTitle
                 self.detailedPageUrl.addTarget(self, action: #selector(self.didTapUrl(sender:)), for: .touchUpInside)
                 let bodyHtml = self.bodyText.htmlAttributedString()
@@ -81,7 +86,7 @@ class DetailedPageViewController: UIViewController {
                     }
                 }
                 self.detailedPageBody.attributedText = bodyHtml
-                self.detailedPageDate.text = self.date
+                self.detailedPageDate.text = self.formatter.formatTraditionalDate(date: self.date)
                 self.detailedPageSection.text = self.section
                 self.navigationController?.navigationBar.topItem?.title = self.newsTitle
                 SwiftSpinner.hide()
