@@ -35,6 +35,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var searchQuery = ""
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
+    let defaults = UserDefaults.standard
+    var bookmarkArray = [String]()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             homeNewsTable.addSubview(refreshControl)
         }
         
+        bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         //let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector(("longPress:")))
         //self.view.addGestureRecognizer(longPressRecognizer)
         
@@ -182,16 +185,25 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         let currentJson = JSON(self.homeNewsData[indexPath.item])
         let id = currentJson["id"].stringValue
         cell.id = id
-        cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
-        cell.isBookmarked = false
+        if self.bookmarkArray.firstIndex(of: cell.id) != nil {
+            cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
+            cell.isBookmarked = true
+        } else {
+            cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+            cell.isBookmarked = false
+        }
+        
         cell.bookmarkButtonAction = { [unowned self] in
             if cell.isBookmarked == true {
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+                self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
             } else {
                 cell.isBookmarked = true
                 cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
+                self.bookmarkArray.append(cell.id)
             }
+            self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
         }
         
         if let section = currentJson["sectionName"].string {

@@ -36,9 +36,7 @@ class HomeNewsTableCell: UITableViewCell {
     }
     
     @IBAction func bookmarkButtonTapped(_ sender: UIButton){
-      // if the closure is defined (not nil)
-      // then execute the code inside the subscribeButtonAction closure
-        print("tappeddddd")
+        //print("tappeddddd")
       bookmarkButtonAction?()
     }
     
