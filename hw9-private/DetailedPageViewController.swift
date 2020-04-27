@@ -54,7 +54,7 @@ class DetailedPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SwiftSpinner.show("Loading Article...")
+        SwiftSpinner.show("Loading Detailed Article...")
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
@@ -67,7 +67,8 @@ class DetailedPageViewController: UIViewController {
                 self.bodyText = data["bodyText"] ?? "None"
                 self.url = data["url"] ?? "https://theguardian.com"
                 let imgurl = URL(string: self.image) ?? URL(string: "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png")
-                self.detailedPageImg.kf.setImage(with: imgurl)
+               let defaultImage = UIImage(named: "big-default-guardian")
+                self.detailedPageImg.kf.setImage(with: imgurl, placeholder: defaultImage)
                 self.detailedPageTitle.text = self.newsTitle
                 self.detailedPageUrl.addTarget(self, action: #selector(self.didTapUrl(sender:)), for: .touchUpInside)
                 let bodyHtml = self.bodyText.htmlAttributedString()
