@@ -15,6 +15,7 @@ import SwiftSpinner
 
 class HeadlineViewController: ButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
+        SwiftSpinner.show("Loading Headlines...")
         buttonBarView.selectedBar.backgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.buttonBarItemFont = .systemFont(ofSize: 14)
@@ -34,8 +35,18 @@ class HeadlineViewController: ButtonBarPagerTabStripViewController {
         SwiftSpinner.hide()
     }
     
-    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         SwiftSpinner.show("Loading Headlines...")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SwiftSpinner.hide()
+    }
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        
         let world = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HeadlineSectionView") as! HeadlineSectionViewController
         world.section = "world"
         

@@ -72,7 +72,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.data[indexPath.row])
+        //print(self.data[indexPath.row])
         let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedPageViewController") as! DetailedPageViewController
         let jsonData = JSON(self.data[indexPath.row])
         detailVC.thumbnailData = jsonData["id"].stringValue
