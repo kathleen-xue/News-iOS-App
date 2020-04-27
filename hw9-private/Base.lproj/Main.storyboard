@@ -252,7 +252,7 @@
                 <gestureRecognizer id="jC8-ym-td5"/>
                 <tapGestureRecognizer id="VbX-Ku-HUs"/>
             </objects>
-            <point key="canvasLocation" x="2584.057971014493" y="-548.4375"/>
+            <point key="canvasLocation" x="1623" y="-591"/>
         </scene>
         <!--Headline Section View Controller-->
         <scene sceneID="Ht3-Vi-fRD">
