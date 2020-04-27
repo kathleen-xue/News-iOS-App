@@ -33,7 +33,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     let searchController = SearchViewController()
     var searchData = [String]()
     var searchQuery = ""
-    
+    let bookmarkTrue = UIImage(systemName: "bookmark.fill")
+    let bookmarkFalse = UIImage(systemName: "bookmark")
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,6 +180,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeNewsCell", for: indexPath) as! HomeNewsTableCell
         //cell.textLabel?.text = "HI"
         let currentJson = JSON(self.homeNewsData[indexPath.item])
+        let id = currentJson["id"].stringValue
+        cell.id = id
+        cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+        cell.isBookmarked = false
+        cell.bookmarkButtonAction = { [unowned self] in
+            if cell.isBookmarked == true {
+                cell.isBookmarked = false
+                cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+            } else {
+                cell.isBookmarked = true
+                cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
+            }
+        }
+        
         if let section = currentJson["sectionName"].string {
             cell.homeNewsTableSection?.text = section
         }

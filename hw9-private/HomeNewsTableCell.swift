@@ -15,6 +15,8 @@ class HomeNewsTableCell: UITableViewCell {
     @IBOutlet weak var homeNewsTableTitle: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     var bookmarkButtonAction : (() -> ())?
+    var id = ""
+    var isBookmarked = false
     override func awakeFromNib() {
      //still empty yet
         super.awakeFromNib()
