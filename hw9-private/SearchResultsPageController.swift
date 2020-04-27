@@ -11,6 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import SwiftSpinner
 
 class SearchResultsPageController : UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -23,6 +24,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         searchResultsTable.dataSource = self
         searchResultsTable.delegate = self
+        SwiftSpinner.show("Loading Search Results...")
         
         print("in searchresults page controller" )
         print(searchQuery)
@@ -30,6 +32,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
             self.data = data
             print(data)
             self.searchResultsTable.reloadData()
+            SwiftSpinner.hide()
         })
     }
     

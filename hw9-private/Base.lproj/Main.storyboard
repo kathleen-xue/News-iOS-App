@@ -289,18 +289,67 @@
         <!--Trending-->
         <scene sceneID="m4J-0s-h8r">
             <objects>
-                <viewController id="Dfd-Rv-27f" sceneMemberID="viewController">
+                <viewController id="Dfd-Rv-27f" customClass="TrendViewController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwl-NE-x9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8W-LJ-Acc">
+                                <rect key="frame" x="20" y="104" width="149" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="35S-5e-9HN"/>
+                                    <constraint firstAttribute="width" constant="149" id="Qrh-73-mL2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter search term..." translatesAutoresizingMaskIntoConstraints="NO" id="LQ6-LL-3yA">
+                                <rect key="frame" x="10" y="191" width="394" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Dfd-Rv-27f" id="EQa-zm-3qz"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Search Term" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFE-R7-RbT">
+                                <rect key="frame" x="20" y="168" width="142" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXq-GK-cPo" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="295" width="374" height="488"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="Ngl-Tf-ikz"/>
+                                    <constraint firstAttribute="height" constant="488" id="gI7-iJ-orl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IFE-R7-RbT" firstAttribute="leading" secondItem="XO7-8T-3dh" secondAttribute="leading" constant="20" id="HHb-Ih-kw4"/>
+                            <constraint firstItem="W8W-LJ-Acc" firstAttribute="leading" secondItem="XO7-8T-3dh" secondAttribute="leading" constant="20" id="KIY-v3-tzs"/>
+                            <constraint firstItem="sXq-GK-cPo" firstAttribute="leading" secondItem="XO7-8T-3dh" secondAttribute="leading" constant="20" id="Ocy-Og-KcG"/>
+                            <constraint firstItem="XO7-8T-3dh" firstAttribute="trailing" secondItem="sXq-GK-cPo" secondAttribute="trailing" constant="20" id="OvO-kU-eJg"/>
+                            <constraint firstItem="IFE-R7-RbT" firstAttribute="top" secondItem="W8W-LJ-Acc" secondAttribute="bottom" constant="21" id="S6I-sI-AwD"/>
+                            <constraint firstItem="LQ6-LL-3yA" firstAttribute="leading" secondItem="XO7-8T-3dh" secondAttribute="leading" constant="10" id="T6Y-Dm-kRt"/>
+                            <constraint firstItem="XO7-8T-3dh" firstAttribute="bottom" secondItem="sXq-GK-cPo" secondAttribute="bottom" constant="30" id="YxC-cB-KuM"/>
+                            <constraint firstItem="LQ6-LL-3yA" firstAttribute="top" secondItem="IFE-R7-RbT" secondAttribute="bottom" constant="2" id="d1X-pJ-eHx"/>
+                            <constraint firstItem="XO7-8T-3dh" firstAttribute="trailing" secondItem="LQ6-LL-3yA" secondAttribute="trailing" constant="10" id="lZ5-a9-8Ar"/>
+                            <constraint firstItem="W8W-LJ-Acc" firstAttribute="top" secondItem="XO7-8T-3dh" secondAttribute="top" constant="60" id="q19-XB-b5M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="XO7-8T-3dh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trending" image="trending-up" id="fhn-eu-HzG"/>
+                    <connections>
+                        <outlet property="trendChart" destination="sXq-GK-cPo" id="Edk-pM-iJZ"/>
+                        <outlet property="trendSearch" destination="LQ6-LL-3yA" id="v7T-9W-md9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9t-gi-wLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="723"/>
+            <point key="canvasLocation" x="773.91304347826087" y="722.54464285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -658,4 +707,5 @@
         <image name="trending-up" width="28" height="28"/>
         <image name="twitter" width="24" height="24"/>
     </resources>
+    <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
