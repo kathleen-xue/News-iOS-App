@@ -12,13 +12,14 @@ import XLPagerTabStrip
 import SwiftSpinner
 import SwiftyJSON
 
-class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
+class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var headlineSectionTable: UITableView!
     
     let getter = HeadlineSectionGetter()
     var section = ""
     var data = [Any]()
+    
     override func viewDidLoad() {
         let sectionName = self.section.uppercased()
         SwiftSpinner.show("Loading \(sectionName) Headlines...")
@@ -74,6 +75,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
         detailVC.thumbnailData = jsonData["id"].stringValue
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
+    
     
 }
 

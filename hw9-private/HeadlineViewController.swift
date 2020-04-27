@@ -13,7 +13,10 @@ import SwiftyJSON
 import Kingfisher
 import SwiftSpinner
 
-class HeadlineViewController: ButtonBarPagerTabStripViewController {
+class HeadlineViewController: ButtonBarPagerTabStripViewController, UISearchBarDelegate {
+    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = SearchViewController()
+    var searchQuery = ""
     override func viewDidLoad() {
         SwiftSpinner.show("Loading Headlines...")
         buttonBarView.selectedBar.backgroundColor = .white
@@ -67,7 +70,30 @@ class HeadlineViewController: ButtonBarPagerTabStripViewController {
         
         return [world, business, politics, sports, technology, science]
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchController.searchBar.delegate = self
+        self.present(UINavigationController(rootViewController: searchController), animated: false, completion: nil)
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchController.autosuggest(query: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.searchBar.text = ""
+        self.dismiss(animated: true)
+    }
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchQuery = searchBar.text ?? ""
+        self.dismiss(animated: true)
+        let searchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsPageController") as! SearchResultsPageController
+        searchBar.text = ""
+        searchVC.searchQuery = self.searchQuery
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
 
 }
 

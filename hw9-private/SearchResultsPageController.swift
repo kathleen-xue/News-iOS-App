@@ -59,7 +59,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
             cell.searchResultsTableImg.kf.setImage(with: URL(string: "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"))
         }
         cell.searchResultsTableTitle.text = jsonData["webTitle"].stringValue
-        cell.searchResultsTableSection.text = jsonData["sectionId"].stringValue
+        cell.searchResultsTableSection.text = jsonData["sectionName"].stringValue
         let formatter = Formatter()
         let dateAgo = formatter.formatTime(time: jsonData["webPublicationDate"].stringValue)
         cell.searchResultsTableTime.text = dateAgo
