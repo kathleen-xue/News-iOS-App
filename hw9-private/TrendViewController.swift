@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Charts
 import SwiftyJSON
+import SwiftSpinner
 
 class TrendViewController : UIViewController, UISearchBarDelegate {
     @IBOutlet weak var trendChart: LineChartView!
@@ -21,6 +22,7 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         trendSearch.delegate = self
+        SwiftSpinner.show("Loading Trend Chart...")
         self.searchQuery = "Coronavirus"
         getter.getTrends(q: searchQuery, completion: { (data) -> Void in
             print(data)
@@ -35,14 +37,20 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
             }
             self.data = LineChartData()
             let ds = LineChartDataSet(entries: self.yArr, label: "Trending Chart for \(self.searchQuery)")
+            ds.setColor(#colorLiteral(red: 0.07843137255, green: 0.5568627451, blue: 1, alpha: 1))
+            ds.setCircleColor(#colorLiteral(red: 0.07843137255, green: 0.5568627451, blue: 1, alpha: 1))
+            ds.drawCircleHoleEnabled = false
+            ds.circleRadius = 4
             self.data.addDataSet(ds)
             self.trendChart.data = self.data
+            SwiftSpinner.hide()
         })
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchQuery = self.trendSearch.text ?? ""
         print(self.searchQuery)
+        SwiftSpinner.show("Loading Trend Chart...")
         getter.getTrends(q: searchQuery, completion: { (data) -> Void in
             print(data)
             let jsonArr = JSON(data).arrayValue
@@ -56,8 +64,13 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
             }
             self.data = LineChartData()
             let ds = LineChartDataSet(entries: self.yArr, label: "Trending Chart for \(self.searchQuery)")
+            ds.setColor(#colorLiteral(red: 0.07843137255, green: 0.5568627451, blue: 1, alpha: 1))
+            ds.setCircleColor(#colorLiteral(red: 0.07843137255, green: 0.5568627451, blue: 1, alpha: 1))
+            ds.drawCircleHoleEnabled = false
+            ds.circleRadius = 4
             self.data.addDataSet(ds)
             self.trendChart.data = self.data
+            SwiftSpinner.hide()
         })
     }
 }
