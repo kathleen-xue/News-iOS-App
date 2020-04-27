@@ -101,6 +101,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         self.searchQuery = searchBar.text ?? ""
         self.dismiss(animated: true)
         let searchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsPageController") as! SearchResultsPageController
+        searchBar.text = ""
         searchVC.searchQuery = self.searchQuery
         self.navigationController?.pushViewController(searchVC, animated: true)
     }

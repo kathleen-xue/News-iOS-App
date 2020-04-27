@@ -25,7 +25,7 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
         SwiftSpinner.show("Loading Trend Chart...")
         self.searchQuery = "Coronavirus"
         getter.getTrends(q: searchQuery, completion: { (data) -> Void in
-            print(data)
+            //print(data)
             let jsonArr = JSON(data).arrayValue
             self.yArr = []
             if jsonArr.count > 0 {
@@ -49,10 +49,10 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchQuery = self.trendSearch.text ?? ""
-        print(self.searchQuery)
+        //print(self.searchQuery)
         SwiftSpinner.show("Loading Trend Chart...")
-        getter.getTrends(q: searchQuery, completion: { (data) -> Void in
-            print(data)
+        getter.getTrends(q: self.searchQuery, completion: { (data) -> Void in
+            //print(data)
             let jsonArr = JSON(data).arrayValue
             self.yArr = []
             if jsonArr.count > 0 {

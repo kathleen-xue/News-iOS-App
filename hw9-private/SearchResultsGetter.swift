@@ -14,7 +14,11 @@ class SearchResultsGetter {
     var data = [Any]()
     func getSearchResults(query: String, completion: @escaping (Array<Any>) -> Void) -> Void {
         let searchUrl =  "http://kxue-nodejs.us-east-1.elasticbeanstalk.com/searchResults?query=\(query)"
-        Alamofire.request(searchUrl)
+        guard let encodedURL = searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("invalid url")
+            return
+        }
+        Alamofire.request(encodedURL)
             .responseJSON{(responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)

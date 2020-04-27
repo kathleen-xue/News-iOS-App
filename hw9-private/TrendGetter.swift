@@ -15,7 +15,12 @@ class TrendGetter {
     var data = [Any]()
     func getTrends(q: String, completion: @escaping (Array<Any>) -> Void) -> Void {
         let getUrl = url + q
-        Alamofire.request(getUrl)
+        print(getUrl)
+        guard let encodedURL = getUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("invalid url")
+            return
+        }
+        Alamofire.request(encodedURL)
             .responseJSON{(responseData) -> Void in
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
