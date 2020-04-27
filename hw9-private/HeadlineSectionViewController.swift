@@ -18,7 +18,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider {
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "hi")
+        return IndicatorInfo(title: self.section.uppercased())
     }
 }
 
