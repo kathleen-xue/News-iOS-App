@@ -25,9 +25,6 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
         searchResultsTable.dataSource = self
         searchResultsTable.delegate = self
         SwiftSpinner.show("Loading Search Results...")
-        
-        print("in searchresults page controller" )
-        print(searchQuery)
         getter.getSearchResults(query: searchQuery, completion: {(data) -> Void in
             self.data = data
             print(data)

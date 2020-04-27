@@ -14,6 +14,8 @@
 		910CDB6A2456488E00A261BC /* TrendGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CDB692456488D00A261BC /* TrendGetter.swift */; };
 		910CDB6C24564DB800A261BC /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CDB6B24564DB800A261BC /* TrendViewController.swift */; };
 		910CDB6E2456A5B300A261BC /* HeadlineSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CDB6D2456A5B300A261BC /* HeadlineSectionViewController.swift */; };
+		910E3F2E2456C2CE00150785 /* HeadlineSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E3F2D2456C2CE00150785 /* HeadlineSectionCell.swift */; };
+		910E3F302456C59600150785 /* HeadlineSectionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E3F2F2456C59600150785 /* HeadlineSectionGetter.swift */; };
 		9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */; };
 		9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA392453828700E28AFF /* DetailedPageViewController.swift */; };
 		9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */; };
@@ -63,6 +65,8 @@
 		910CDB692456488D00A261BC /* TrendGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGetter.swift; sourceTree = "<group>"; };
 		910CDB6B24564DB800A261BC /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		910CDB6D2456A5B300A261BC /* HeadlineSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineSectionViewController.swift; sourceTree = "<group>"; };
+		910E3F2D2456C2CE00150785 /* HeadlineSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineSectionCell.swift; sourceTree = "<group>"; };
+		910E3F2F2456C59600150785 /* HeadlineSectionGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineSectionGetter.swift; sourceTree = "<group>"; };
 		9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableCell.swift; sourceTree = "<group>"; };
 		9151DA392453828700E28AFF /* DetailedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewController.swift; sourceTree = "<group>"; };
 		9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedNewsGetter.swift; sourceTree = "<group>"; };
@@ -187,9 +191,11 @@
 				9183061C244BF8A0001938E1 /* HomeNewsGetter.swift */,
 				910CDB692456488D00A261BC /* TrendGetter.swift */,
 				910CDB65245587AA00A261BC /* SearchResultsGetter.swift */,
+				910E3F2F2456C59600150785 /* HeadlineSectionGetter.swift */,
 				9151DA3B2453FA2000E28AFF /* DetailedNewsGetter.swift */,
 				9128FEA8244CE3C7001CEE0F /* HomeNewsTableCell.swift */,
 				910CDB632455659E00A261BC /* SearchResultsTableCell.swift */,
+				910E3F2D2456C2CE00150785 /* HeadlineSectionCell.swift */,
 				910CDB6724561DE400A261BC /* Formatter.swift */,
 			);
 			path = "hw9-private";
@@ -460,12 +466,14 @@
 				9151DA3C2453FA2000E28AFF /* DetailedNewsGetter.swift in Sources */,
 				9128FEA9244CE3C7001CEE0F /* HomeNewsTableCell.swift in Sources */,
 				915CEFAE244915E80097F645 /* WeatherGetter.swift in Sources */,
+				910E3F302456C59600150785 /* HeadlineSectionGetter.swift in Sources */,
 				910CDB6E2456A5B300A261BC /* HeadlineSectionViewController.swift in Sources */,
 				9183061D244BF8A0001938E1 /* HomeNewsGetter.swift in Sources */,
 				915CEF8024453CE00097F645 /* FirstViewController.swift in Sources */,
 				915CEF7C24453CE00097F645 /* AppDelegate.swift in Sources */,
 				9151DA4024555E5D00E28AFF /* SearchResultsPageController.swift in Sources */,
 				910CDB6824561DE400A261BC /* Formatter.swift in Sources */,
+				910E3F2E2456C2CE00150785 /* HeadlineSectionCell.swift in Sources */,
 				9151DA3A2453828800E28AFF /* DetailedPageViewController.swift in Sources */,
 				915CEF7E24453CE00097F645 /* SceneDelegate.swift in Sources */,
 				910CDB6A2456488E00A261BC /* TrendGetter.swift in Sources */,

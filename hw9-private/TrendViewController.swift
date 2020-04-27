@@ -47,9 +47,11 @@ class TrendViewController : UIViewController, UISearchBarDelegate {
         })
     }
     
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchQuery = self.trendSearch.text ?? ""
         //print(self.searchQuery)
+        self.trendSearch.endEditing(true)
         SwiftSpinner.show("Loading Trend Chart...")
         getter.getTrends(q: self.searchQuery, completion: { (data) -> Void in
             //print(data)
