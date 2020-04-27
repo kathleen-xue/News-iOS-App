@@ -172,7 +172,11 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIH-hU-SMJ">
                                                     <rect key="frame" x="341" y="71" width="18" height="21"/>
+                                                    <gestureRecognizers/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="VbX-Ku-HUs" appends="YES" id="hxw-YY-Flm"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -246,6 +250,7 @@
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bby-lR-ORz"/>
                 <tapGestureRecognizer id="qoN-G7-NUA"/>
                 <gestureRecognizer id="jC8-ym-td5"/>
+                <tapGestureRecognizer id="VbX-Ku-HUs"/>
             </objects>
             <point key="canvasLocation" x="2584.057971014493" y="-548.4375"/>
         </scene>
@@ -310,7 +315,11 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Hi-mH-s1q">
                                                     <rect key="frame" x="337" y="71" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="hIk-y4-mga" appends="YES" id="bLL-qr-YMp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -346,6 +355,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyy-wG-1N3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hIk-y4-mga"/>
             </objects>
             <point key="canvasLocation" x="2505.7971014492755" y="172.76785714285714"/>
         </scene>
@@ -638,7 +648,11 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-RE-KH7">
                                                     <rect key="frame" x="367.5" y="70" width="17.5" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="9oJ-Nx-lqo" appends="YES" id="F2m-4l-IUE"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-bZ-mvd" userLabel="Search Results Table Section">
                                                     <rect key="frame" x="257" y="79" width="128" height="14"/>
@@ -701,6 +715,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFO-rx-Cjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9oJ-Nx-lqo"/>
             </objects>
             <point key="canvasLocation" x="2237.68115942029" y="-1264.2857142857142"/>
         </scene>
