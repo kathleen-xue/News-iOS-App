@@ -114,7 +114,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
             case "ShowDetail":
-                os_log("showing more detail.", log: OSLog.default, type: .debug)
                 guard let detailNewsController = segue.destination as? DetailedPageViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
                 }
@@ -126,6 +125,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 }
                 let idJSON = JSON(self.homeNewsData[indexPath.row])
                 let selectedNews = idJSON["id"].string
+                print(selectedNews!)
                 //print(selectedNews!)
                 detailNewsController.thumbnailData = selectedNews
             
