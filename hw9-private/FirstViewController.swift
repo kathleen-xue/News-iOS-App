@@ -144,8 +144,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                     fatalError("The selected cell is not being displayed by the table")
                 }
                 detailNewsController.delegate = self
+                
                 let idJSON = JSON(self.homeNewsData[indexPath.row])
-                let selectedNews = idJSON["id"].string
+                let selectedNews = idJSON["id"].stringValue
+                if self.bookmarkArray.firstIndex(of: selectedNews) != nil {
+                    detailNewsController.parentIsBookmarked = true
+                } else {
+                    detailNewsController.parentIsBookmarked = false
+                }
                 //print(selectedNews!)
                 //print(selectedNews!)
                 detailNewsController.thumbnailData = selectedNews

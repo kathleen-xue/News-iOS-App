@@ -119,6 +119,11 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
         detailVC.delegate = self
         let jsonData = JSON(self.data[indexPath.row])
         detailVC.thumbnailData = jsonData["id"].stringValue
+        if self.bookmarkArray.firstIndex(of: jsonData["id"].stringValue) != nil {
+            detailVC.parentIsBookmarked = true
+        } else {
+            detailVC.parentIsBookmarked = false
+        }
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

@@ -45,6 +45,7 @@ class DetailedPageViewController: UIViewController {
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
     var isBookmarked = false
+    var parentIsBookmarked = false
     var delegate: DetailedPageDelegate?
     
     @IBAction func didTapUrl(sender: AnyObject) {
@@ -67,6 +68,9 @@ class DetailedPageViewController: UIViewController {
         }
         self.bookmarkButton.target = self;
         self.bookmarkButton.action = #selector(bookmarkButtonTapped(_:));
+        if self.isBookmarked != self.parentIsBookmarked {
+            self.delegate?.toggleBookmark(id: self.thumbnailData ?? "")
+        }
     }
     
     /*override func viewDidLayoutSubviews() {
