@@ -129,7 +129,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 }
                 let idJSON = JSON(self.homeNewsData[indexPath.row])
                 let selectedNews = idJSON["id"].string
-                print(selectedNews!)
+                //print(selectedNews!)
                 //print(selectedNews!)
                 detailNewsController.thumbnailData = selectedNews
             

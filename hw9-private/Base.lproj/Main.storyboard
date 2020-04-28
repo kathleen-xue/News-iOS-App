@@ -661,12 +661,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-RE-KH7">
-                                                    <rect key="frame" x="367.5" y="70" width="17.5" height="22"/>
+                                                    <rect key="frame" x="358" y="70" width="37" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <gestureRecognizers/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
                                                     <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="9oJ-Nx-lqo" appends="YES" id="F2m-4l-IUE"/>
+                                                        <action selector="bookmarkButtonTapped:" destination="ZWN-ej-VRH" eventType="touchUpInside" id="Pic-t7-oJp"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-bZ-mvd" userLabel="Search Results Table Section">
@@ -695,6 +695,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="wJF-RE-KH7" id="7cx-pK-Iwr"/>
                                             <outlet property="searchResultsTableImg" destination="TIf-Q3-neM" id="JDG-ug-z8I"/>
                                             <outlet property="searchResultsTableSection" destination="7HW-bZ-mvd" id="CAL-Pd-v9E"/>
                                             <outlet property="searchResultsTableTime" destination="lhR-UJ-7x8" id="LiK-4j-rh4"/>
