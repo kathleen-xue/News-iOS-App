@@ -977,7 +977,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="1qa-Gt-Gq0">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="twitter" id="Wm6-L7-B0i"/>
+                            <barButtonItem title="Item" image="twitter" id="Wm6-L7-B0i">
+                                <connections>
+                                    <action selector="didTapTwitter:" destination="xgs-Ve-tgE" id="LDk-Ov-LoN"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="bookmark" catalog="system" id="sXb-u2-9d2"/>
                         </rightBarButtonItems>
                     </navigationItem>

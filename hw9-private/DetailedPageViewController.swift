@@ -66,11 +66,17 @@ class DetailedPageViewController: UIViewController {
             self.bookmarkButton.image = self.bookmarkFalse
             self.isBookmarked = false
         }
+        self.twitterButton.target = self
+        self.twitterButton.action = #selector(didTapTwitter(_:))
         self.bookmarkButton.target = self;
         self.bookmarkButton.action = #selector(bookmarkButtonTapped(_:));
         if self.isBookmarked != self.parentIsBookmarked {
             self.delegate?.toggleBookmark(id: self.thumbnailData ?? "")
         }
+    }
+    
+    @IBAction func didTapTwitter(_ sender: Any) {
+        UIApplication.shared.openURL(NSURL(string: "https://twitter.com/intent/tweet?text=Check%20out%20this%20article!&hashtags=CSCI571&url=\(self.url)")! as URL)
     }
     
     /*override func viewDidLayoutSubviews() {
