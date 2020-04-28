@@ -537,14 +537,14 @@
                         <segue destination="KMQ-FC-C6P" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Vxu-w2-BCi" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="Dfd-Rv-27f" kind="relationship" relationship="viewControllers" id="6Bb-qM-V2v"/>
-                        <segue destination="eV8-Ku-NSq" kind="relationship" relationship="viewControllers" id="F2R-h5-d8J"/>
+                        <segue destination="8cC-IB-3VR" kind="relationship" relationship="viewControllers" id="F2R-h5-d8J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Bookmarks-->
+        <!--Bookmarks View Controller-->
         <scene sceneID="QOA-R7-1Z4">
             <objects>
                 <viewController id="eV8-Ku-NSq" customClass="BookmarksViewController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
@@ -553,7 +553,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="omd-SK-mx4">
-                                <rect key="frame" x="20" y="149" width="374" height="664"/>
+                                <rect key="frame" x="20" y="154" width="374" height="659"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="8j3-09-qcx">
                                     <size key="itemSize" width="175" height="250"/>
@@ -652,7 +652,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75a-S9-IoF">
-                                <rect key="frame" x="26" y="98" width="198" height="43"/>
+                                <rect key="frame" x="26" y="103" width="198" height="43"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -661,7 +661,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="asj-hv-ZE9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="75a-S9-IoF" secondAttribute="trailing" symbolic="YES" id="0TN-vP-nLE"/>
-                            <constraint firstItem="75a-S9-IoF" firstAttribute="top" secondItem="asj-hv-ZE9" secondAttribute="top" constant="54" id="4A6-H1-Mhy"/>
+                            <constraint firstItem="75a-S9-IoF" firstAttribute="top" secondItem="asj-hv-ZE9" secondAttribute="top" constant="15" id="4A6-H1-Mhy"/>
                             <constraint firstItem="omd-SK-mx4" firstAttribute="bottom" secondItem="asj-hv-ZE9" secondAttribute="bottom" id="88R-JC-oMW"/>
                             <constraint firstItem="omd-SK-mx4" firstAttribute="trailing" secondItem="1CV-lx-2k6" secondAttribute="trailingMargin" id="Xjb-KX-4aa"/>
                             <constraint firstItem="omd-SK-mx4" firstAttribute="top" secondItem="75a-S9-IoF" secondAttribute="bottom" constant="8" id="YFD-vL-swa"/>
@@ -670,14 +670,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="asj-hv-ZE9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="kbT-Z2-rh0"/>
+                    <navigationItem key="navigationItem" id="hV3-5g-Lhn"/>
                     <connections>
                         <outlet property="bookmarksCollection" destination="omd-SK-mx4" id="Z5D-y2-KsR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bu-Q4-JUO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.91304347826087" y="1388.8392857142856"/>
+            <point key="canvasLocation" x="1684.057971014493" y="1388.8392857142856"/>
         </scene>
         <!--Home-->
         <scene sceneID="HXB-uu-Ef3">
@@ -1016,6 +1016,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5P-Tu-0ZE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="773.91304347826087" y="52.901785714285715"/>
+        </scene>
+        <!--Bookmarks-->
+        <scene sceneID="ebm-GF-Pqo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cC-IB-3VR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="kbT-Z2-rh0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dRG-62-gph">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eV8-Ku-NSq" kind="relationship" relationship="rootViewController" id="f90-N7-FaI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rlw-ab-Okv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773.91304347826087" y="1388.8392857142856"/>
         </scene>
     </scenes>
     <resources>

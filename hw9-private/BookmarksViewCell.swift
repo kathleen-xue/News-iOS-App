@@ -15,7 +15,13 @@ class BookmarksViewCell : UICollectionViewCell {
     @IBOutlet weak var bookmarksDate: UILabel!
     @IBOutlet weak var bookmarksTitle: UILabel!
     @IBOutlet weak var bookmarksImg: UIImageView!
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 10
+    }
     override var frame: CGRect {
         get {
             return super.frame

@@ -12,7 +12,8 @@ import SwiftyJSON
 import Kingfisher
 import SwiftSpinner
 
-class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailedPageDelegate {
+    
     @IBOutlet weak var bookmarksCollection: UICollectionView!
     let getter = DetailedNewsGetter()
     let defaults = UserDefaults.standard
@@ -46,8 +47,9 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
                         let id = self.bookmarkArray[i]
                         self.data.append(["image": image, "title": title, "section": section, "date": date, "id": id])
                     }
+                    SwiftSpinner.hide()
                 }
-                SwiftSpinner.hide()
+                
             })
         }
         //SwiftSpinner.hide()
@@ -55,7 +57,9 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        SwiftSpinner.show("Loading Bookmarks...")
         super.viewWillAppear(animated)
+        SwiftSpinner.hide()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,6 +104,28 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedPageViewController") as! DetailedPageViewController
+        detailVC.delegate = self
+        let bid = self.bookmarkArray[indexPath.row]
+        detailVC.thumbnailData = bid
+        if self.bookmarkArray.firstIndex(of: bid) != nil {
+            detailVC.parentIsBookmarked = true
+        } else {
+            detailVC.parentIsBookmarked = false
+        }
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func toggleBookmark(id: String) {
+        if self.bookmarkArray.firstIndex(of: id) != nil {
+            self.bookmarkArray = self.bookmarkArray.filter{$0 != id}
+        } else {
+            self.bookmarkArray.append(id)
+        }
+        defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+        self.bookmarksCollection.reloadData()
+    }
     
 }
 
