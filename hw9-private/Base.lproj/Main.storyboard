@@ -603,6 +603,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8x-yB-q8F">
                                                     <rect key="frame" x="144" y="216" width="18" height="22"/>
                                                     <state key="normal" image="bookmark.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="bookmarkButtonTapped:" destination="KzW-UV-KLN" eventType="touchUpInside" id="Lmo-VL-Nja"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6p-Wd-Kwn">
                                                     <rect key="frame" x="8" y="221" width="52" height="14"/>
@@ -657,6 +660,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8nu-7r-O8Y">
+                                <rect key="frame" x="20" y="118" width="374" height="659"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -673,6 +683,7 @@
                     <navigationItem key="navigationItem" id="hV3-5g-Lhn"/>
                     <connections>
                         <outlet property="bookmarksCollection" destination="omd-SK-mx4" id="Z5D-y2-KsR"/>
+                        <outlet property="noBookmarksLabel" destination="8nu-7r-O8Y" id="f3y-S3-KGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bu-Q4-JUO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

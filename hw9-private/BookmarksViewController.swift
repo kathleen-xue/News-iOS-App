@@ -13,12 +13,15 @@ import Kingfisher
 import SwiftSpinner
 
 class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailedPageDelegate {
-    
+    @IBOutlet weak var noBookmarksLabel: UILabel!
     @IBOutlet weak var bookmarksCollection: UICollectionView!
     let getter = DetailedNewsGetter()
     let defaults = UserDefaults.standard
     var bookmarkArray = [String]()
     var data = [[String: String]]()
+    
+    let bookmarkTrue = UIImage(systemName: "bookmark.fill")
+    let bookmarkFalse = UIImage(systemName: "bookmark")
     
     let sectionInsets = UIEdgeInsets(top: 50.0,
     left: 20.0,
@@ -34,6 +37,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         self.bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         //print(self.bookmarkArray)
         if self.bookmarkArray.count > 0 {
+            self.noBookmarksLabel.text = ""
             self.data = [[String: String]]()
             self.getter.getDetailedNewsBulk(idArr: self.bookmarkArray, completion: {(d) -> Void in
                 print(d)
@@ -51,6 +55,8 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
                 }
                 
             })
+        } else {
+            self.noBookmarksLabel.text = "No bookmarks added."
         }
         //SwiftSpinner.hide()
         //print(self.data)
@@ -59,6 +65,8 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         SwiftSpinner.show("Loading Bookmarks...")
         super.viewWillAppear(animated)
+        self.bookmarkArray = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        self.bookmarksCollection.reloadData()
         SwiftSpinner.hide()
     }
     
@@ -100,7 +108,15 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             let imgurl = URL(string: cellData["image"].stringValue)
             cell.bookmarksImg?.kf.setImage(with: imgurl)
             cell.bookmarksSection.text = cellData["section"].stringValue
+            cell.id = self.bookmarkArray[indexPath.row]
+            cell.bookmarkButtonAction = { [unowned self] in
+                    cell.isBookmarked = false
+                    self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
+                self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.bookmarksCollection.reloadData()
+            }
         })
+        
         return cell
     }
     
