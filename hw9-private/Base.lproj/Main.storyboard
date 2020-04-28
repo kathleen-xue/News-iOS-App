@@ -547,7 +547,7 @@
         <!--Bookmarks-->
         <scene sceneID="QOA-R7-1Z4">
             <objects>
-                <viewController id="eV8-Ku-NSq" sceneMemberID="viewController">
+                <viewController id="eV8-Ku-NSq" customClass="BookmarksViewController" customModule="hw9_private" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1CV-lx-2k6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -555,21 +555,21 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="omd-SK-mx4">
                                 <rect key="frame" x="20" y="149" width="374" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8j3-09-qcx">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="8j3-09-qcx">
                                     <size key="itemSize" width="175" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="KzW-UV-KLN">
-                                        <rect key="frame" x="0.0" y="0.0" width="175" height="250"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookmarksCell" id="KzW-UV-KLN" customClass="BookmarksViewCell" customModule="hw9_private" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="175" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dhG-L5-qke">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mzy-NZ-AKg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mzy-NZ-AKg">
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="128" id="Jfs-ah-FkH"/>
@@ -578,15 +578,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewz-p5-ohS">
                                                     <rect key="frame" x="8" y="136" width="159" height="67"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6p-Wd-Kwn">
-                                                    <rect key="frame" x="8" y="221" width="28.5" height="14"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="14" id="mqW-5R-hQP"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -613,6 +604,15 @@
                                                     <rect key="frame" x="144" y="216" width="18" height="22"/>
                                                     <state key="normal" image="bookmark.fill" catalog="system"/>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6p-Wd-Kwn">
+                                                    <rect key="frame" x="8" y="221" width="52" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="mqW-5R-hQP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="O6p-Wd-Kwn" firstAttribute="leading" secondItem="dhG-L5-qke" secondAttribute="leading" constant="8" id="IEX-w4-v47"/>
@@ -620,6 +620,7 @@
                                                 <constraint firstItem="mzy-NZ-AKg" firstAttribute="width" secondItem="dhG-L5-qke" secondAttribute="width" id="Mso-hq-v8b"/>
                                                 <constraint firstItem="vLr-fn-aZN" firstAttribute="leading" secondItem="dhG-L5-qke" secondAttribute="leading" constant="74" id="Nf3-r9-nQq"/>
                                                 <constraint firstItem="KgE-ck-eko" firstAttribute="leading" secondItem="dhG-L5-qke" secondAttribute="leading" constant="57" id="OFu-TO-wLM"/>
+                                                <constraint firstItem="mzy-NZ-AKg" firstAttribute="top" secondItem="dhG-L5-qke" secondAttribute="top" id="Pdd-uE-mEN"/>
                                                 <constraint firstItem="mzy-NZ-AKg" firstAttribute="top" secondItem="dhG-L5-qke" secondAttribute="top" id="Ppk-fd-wsx"/>
                                                 <constraint firstItem="ewz-p5-ohS" firstAttribute="top" secondItem="mzy-NZ-AKg" secondAttribute="bottom" constant="8" id="S1t-6D-kPx"/>
                                                 <constraint firstItem="vLr-fn-aZN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6p-Wd-Kwn" secondAttribute="trailing" constant="8" symbolic="YES" id="T2F-bo-AFq"/>
@@ -634,12 +635,24 @@
                                                 <constraint firstItem="v8x-yB-q8F" firstAttribute="top" secondItem="ewz-p5-ohS" secondAttribute="bottom" constant="13" id="yAu-xX-RHX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <size key="customSize" width="175" height="250"/>
+                                        <connections>
+                                            <outlet property="bookmarksButton" destination="v8x-yB-q8F" id="d9p-cn-hKO"/>
+                                            <outlet property="bookmarksDate" destination="O6p-Wd-Kwn" id="ql2-eZ-gii"/>
+                                            <outlet property="bookmarksImg" destination="mzy-NZ-AKg" id="8FY-Nt-Nsd"/>
+                                            <outlet property="bookmarksSection" destination="vLr-fn-aZN" id="3nJ-ml-cQm"/>
+                                            <outlet property="bookmarksTitle" destination="ewz-p5-ohS" id="pR0-Td-1Tg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="eV8-Ku-NSq" id="vHO-AS-siG"/>
+                                    <outlet property="delegate" destination="eV8-Ku-NSq" id="y1W-Oo-Xf6"/>
+                                </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmarks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75a-S9-IoF">
-                                <rect key="frame" x="20" y="92" width="198" height="43"/>
+                                <rect key="frame" x="26" y="98" width="198" height="43"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -648,16 +661,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="asj-hv-ZE9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="75a-S9-IoF" secondAttribute="trailing" symbolic="YES" id="0TN-vP-nLE"/>
-                            <constraint firstItem="75a-S9-IoF" firstAttribute="top" secondItem="asj-hv-ZE9" secondAttribute="top" constant="48" id="4A6-H1-Mhy"/>
+                            <constraint firstItem="75a-S9-IoF" firstAttribute="top" secondItem="asj-hv-ZE9" secondAttribute="top" constant="54" id="4A6-H1-Mhy"/>
                             <constraint firstItem="omd-SK-mx4" firstAttribute="bottom" secondItem="asj-hv-ZE9" secondAttribute="bottom" id="88R-JC-oMW"/>
                             <constraint firstItem="omd-SK-mx4" firstAttribute="trailing" secondItem="1CV-lx-2k6" secondAttribute="trailingMargin" id="Xjb-KX-4aa"/>
-                            <constraint firstItem="omd-SK-mx4" firstAttribute="top" secondItem="75a-S9-IoF" secondAttribute="bottom" constant="14" id="YFD-vL-swa"/>
-                            <constraint firstItem="75a-S9-IoF" firstAttribute="leading" secondItem="1CV-lx-2k6" secondAttribute="leadingMargin" id="b6N-OX-Jwq"/>
-                            <constraint firstItem="75a-S9-IoF" firstAttribute="leading" secondItem="omd-SK-mx4" secondAttribute="leading" id="jxR-Kh-C8l"/>
+                            <constraint firstItem="omd-SK-mx4" firstAttribute="top" secondItem="75a-S9-IoF" secondAttribute="bottom" constant="8" id="YFD-vL-swa"/>
+                            <constraint firstItem="75a-S9-IoF" firstAttribute="leading" secondItem="1CV-lx-2k6" secondAttribute="leadingMargin" constant="6" id="b6N-OX-Jwq"/>
+                            <constraint firstItem="75a-S9-IoF" firstAttribute="leading" secondItem="omd-SK-mx4" secondAttribute="leading" constant="6" id="jxR-Kh-C8l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="asj-hv-ZE9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark.fill" catalog="system" id="kbT-Z2-rh0"/>
+                    <connections>
+                        <outlet property="bookmarksCollection" destination="omd-SK-mx4" id="Z5D-y2-KsR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bu-Q4-JUO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -105,7 +105,7 @@ class DetailedPageViewController: UIViewController {
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
                 let jsonData = JSON(data)
                 self.image = jsonData["image"].string ??  "https://assets.guim.co.uk/images/eada8aa27c12fe2d5afa3a89d3fbae0d/fallback-logo.png"
-               print(self.image)
+               //print(self.image)
                 self.newsTitle = data["title"] ?? "None"
                 self.section = data["section"] ?? "None"
                 self.date = data["date"] ?? "None"

@@ -252,5 +252,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABA6D0E9-E957-4466-96AD-30A07127EC9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw9-private/DetailedNewsGetter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getDetailedNewsBulk(idArr:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEAE7E6D-9264-4BAD-9424-6387499E6FF2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hw9-private/DetailedNewsGetter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getDetailedNewsBulk(idArr:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BEAE7E6D-9264-4BAD-9424-6387499E6FF2 - ec95d655fbb0448c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "hw9_private.DetailedNewsGetter.getDetailedNewsBulk(idArr: Swift.Array&lt;Swift.String&gt;, completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "hw9-private"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kathleenxue/Desktop/cs571/hw9-private/hw9-private/DetailedNewsGetter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "1297">
+               </Location>
+               <Location
+                  uuid = "BEAE7E6D-9264-4BAD-9424-6387499E6FF2 - 661e3b1df949dd2e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in hw9_private.DetailedNewsGetter.getDetailedNewsBulk(idArr: Swift.Array&lt;Swift.String&gt;, completion: (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "hw9-private"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kathleenxue/Desktop/cs571/hw9-private/hw9-private/DetailedNewsGetter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "417">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
