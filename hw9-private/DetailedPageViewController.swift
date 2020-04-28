@@ -15,8 +15,14 @@ import MapKit
 import Kingfisher
 import SwiftSpinner
 
+protocol DetailedPageDelegate {
+    func toggleBookmark(id: String)
+}
+
 class DetailedPageViewController: UIViewController {
     
+    @IBOutlet weak var twitterButton: UIBarButtonItem!
+    @IBOutlet weak var bookmarkButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var detailedPageImg: UIImageView!
     @IBOutlet weak var detailedPageSection: UILabel!
@@ -33,20 +39,55 @@ class DetailedPageViewController: UIViewController {
     var bodyText: String = ""
     var url: String = "https://theguardian.com"
     let formatter = Formatter()
+    let defaults = UserDefaults.standard
+    var bookmarkArray = [String]()
+    var id = ""
+    let bookmarkTrue = UIImage(systemName: "bookmark.fill")
+    let bookmarkFalse = UIImage(systemName: "bookmark")
+    var isBookmarked = false
+    var delegate: DetailedPageDelegate?
+    
     @IBAction func didTapUrl(sender: AnyObject) {
         if let url = URL(string: self.url) {
             UIApplication.shared.open(url)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        id = thumbnailData ?? ""
         self.view.translatesAutoresizingMaskIntoConstraints = true
+        bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        if bookmarkArray.firstIndex(of: id) != nil {
+            self.bookmarkButton.image = self.bookmarkTrue
+            self.isBookmarked = true
+        } else {
+            self.bookmarkButton.image = self.bookmarkFalse
+            self.isBookmarked = false
+        }
+        self.bookmarkButton.target = self;
+        self.bookmarkButton.action = #selector(bookmarkButtonTapped(_:));
     }
     
     /*override func viewDidLayoutSubviews() {
         self.scrollView.isScrollEnabled = true
         self.scrollView.contentSize = CGSize(width: 414, height: 1700) // height should be grater than scrollview's frame height
     }*/
+    
+    @objc func bookmarkButtonTapped(_ sender: UIButton){
+        let bkArr = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        if bkArr.firstIndex(of: self.id) != nil {
+            self.isBookmarked = false
+            self.bookmarkButton.image = self.bookmarkFalse
+            self.bookmarkArray = self.bookmarkArray.filter{$0 != self.id}
+        } else {
+            self.isBookmarked = true
+            self.bookmarkButton.image = self.bookmarkTrue
+            self.bookmarkArray.append(self.id)
+        }
+        self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+        self.delegate?.toggleBookmark(id: self.id)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         

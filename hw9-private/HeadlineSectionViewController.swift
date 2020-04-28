@@ -12,7 +12,8 @@ import XLPagerTabStrip
 import SwiftSpinner
 import SwiftyJSON
 
-class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DetailedPageDelegate {
+    
     
     @IBOutlet weak var headlineSectionTable: UITableView!
     
@@ -58,6 +59,16 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
         super.viewWillAppear(animated)
     }
     
+    func toggleBookmark(id: String) {
+        if self.bookmarkArray.firstIndex(of: id) != nil {
+            self.bookmarkArray = self.bookmarkArray.filter{$0 != id}
+        } else {
+            self.bookmarkArray.append(id)
+        }
+        defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+        self.headlineSectionTable.reloadData()
+    }
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: self.section.uppercased())
     }
@@ -81,7 +92,8 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
         }
         
         cell.bookmarkButtonAction = { [unowned self] in
-            if cell.isBookmarked == true {
+            let bkArr = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+            if bkArr.firstIndex(of: cell.id) != nil {
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
                 self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
@@ -104,6 +116,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(self.data[indexPath.row])
         let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailedPageViewController") as! DetailedPageViewController
+        detailVC.delegate = self
         let jsonData = JSON(self.data[indexPath.row])
         detailVC.thumbnailData = jsonData["id"].stringValue
         self.navigationController?.pushViewController(detailVC, animated: true)

@@ -14,7 +14,8 @@ import MapKit
 import Kingfisher
 import SwiftSpinner
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate  {
+class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, DetailedPageDelegate  {
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var weatherApiImg: UIImageView!
     @IBOutlet weak var weatherApiCity: UILabel!
@@ -86,6 +87,21 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         homeNewsTable.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeNewsTable.reloadData()
+    }
+    
+    func toggleBookmark(id: String) {
+        if self.bookmarkArray.firstIndex(of: id) != nil {
+            self.bookmarkArray = self.bookmarkArray.filter{$0 != id}
+        } else {
+            self.bookmarkArray.append(id)
+        }
+        defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+        self.homeNewsTable.reloadData()
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchController.searchBar.delegate = self
         self.present(UINavigationController(rootViewController: searchController), animated: false, completion: nil)
@@ -127,6 +143,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 guard let indexPath = homeNewsTable.indexPath(for: detailNewsCell) else {
                     fatalError("The selected cell is not being displayed by the table")
                 }
+                detailNewsController.delegate = self
                 let idJSON = JSON(self.homeNewsData[indexPath.row])
                 let selectedNews = idJSON["id"].string
                 //print(selectedNews!)
@@ -194,7 +211,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         }
         
         cell.bookmarkButtonAction = { [unowned self] in
-            if cell.isBookmarked == true {
+            let bkArr = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+            if bkArr.firstIndex(of: cell.id) != nil {
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
                 self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
