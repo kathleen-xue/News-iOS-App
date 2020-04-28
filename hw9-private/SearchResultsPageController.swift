@@ -24,6 +24,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     let bookmarkFalse = UIImage(systemName: "bookmark")
     let defaults = UserDefaults.standard
     var bookmarkArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchResultsTable.dataSource = self

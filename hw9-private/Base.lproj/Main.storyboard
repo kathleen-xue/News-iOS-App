@@ -327,6 +327,9 @@
                                                         <constraint firstAttribute="height" constant="41" id="SSB-7w-zgK"/>
                                                     </constraints>
                                                     <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="bookmarkButtonTapped:" destination="ZUQ-Ib-moK" eventType="touchUpInside" id="eav-nb-iTB"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -349,6 +352,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="6Hi-mH-s1q" id="K90-Ag-5Xy"/>
                                             <outlet property="headlineSectionDate" destination="Fvk-oy-5u7" id="Hi5-zq-EUl"/>
                                             <outlet property="headlineSectionImg" destination="X0S-XO-Ada" id="9tO-Jx-iqg"/>
                                             <outlet property="headlineSectionSection" destination="5wk-vm-DFQ" id="dRn-uy-17O"/>

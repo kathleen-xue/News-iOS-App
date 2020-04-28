@@ -19,20 +19,29 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     let getter = HeadlineSectionGetter()
     var section = ""
     var data = [Any]()
+    let bookmarkTrue = UIImage(systemName: "bookmark.fill")
+    let bookmarkFalse = UIImage(systemName: "bookmark")
+    let defaults = UserDefaults.standard
+    var bookmarkArray = [String]()
     
     override func viewDidLoad() {
         let sectionName = self.section.uppercased()
         SwiftSpinner.show("Loading \(sectionName) Headlines...")
         super.viewDidLoad()
+        
         headlineSectionTable.dataSource = self
         headlineSectionTable.delegate = self
         headlineSectionTable.rowHeight = 110
+        
+        bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        
         var sect = ""
         if self.section == "sports" {
             sect = "sport"
         } else {
             sect = self.section
         }
+        
         getter.getHeadlineResults(section: sect, completion: {(data) -> Void in
             self.data = data
             self.headlineSectionTable.reloadData()
@@ -60,6 +69,30 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeadlineSectionCell", for: indexPath) as! HeadlineSectionCell
         let jsonData = JSON(self.data[indexPath.item])
+        let id = jsonData["id"].stringValue
+        cell.id = id
+        
+        if self.bookmarkArray.firstIndex(of: cell.id) != nil {
+            cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
+            cell.isBookmarked = true
+        } else {
+            cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+            cell.isBookmarked = false
+        }
+        
+        cell.bookmarkButtonAction = { [unowned self] in
+            if cell.isBookmarked == true {
+                cell.isBookmarked = false
+                cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
+                self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
+            } else {
+                cell.isBookmarked = true
+                cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
+                self.bookmarkArray.append(cell.id)
+            }
+            self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+        }
+        
         let thumbUrl = URL(string: jsonData["img"].stringValue)
         cell.headlineSectionImg?.kf.setImage(with: thumbUrl, placeholder: UIImage(named: "default-guardian"))
         cell.headlineSectionTitle.text = jsonData["title"].stringValue

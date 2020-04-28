@@ -15,6 +15,12 @@ class HeadlineSectionCell: UITableViewCell {
     @IBOutlet weak var headlineSectionDate: UILabel!
     
     @IBOutlet weak var headlineSectionSection: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    
+    var bookmarkButtonAction : (() -> ())?
+    var id = ""
+    var isBookmarked = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.borderColor = UIColor.lightGray.cgColor
@@ -22,7 +28,13 @@ class HeadlineSectionCell: UITableViewCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 10
         self.headlineSectionImg.layer.cornerRadius = 10
+        self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
     
+    }
+    
+    @IBAction func bookmarkButtonTapped(_ sender: UIButton){
+        //print("tappeddddd")
+      bookmarkButtonAction?()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
