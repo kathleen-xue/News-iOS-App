@@ -30,8 +30,10 @@ class DetailedNewsGetter {
                 let date = swiftyJsonVar["webPublicationDate"].stringValue
                 var bodyText = ""
                 if let bodyArray = swiftyJsonVar["blocks"]["body"].array {
-                    for i in 0...bodyArray.count-1 {
-                        bodyText.append(bodyArray[i]["bodyHtml"].stringValue)
+                    if bodyArray.count > 0 {
+                        for i in 0...bodyArray.count-1 {
+                            bodyText.append(bodyArray[i]["bodyHtml"].stringValue)
+                        }
                     }
                 }
                 let url = swiftyJsonVar["webUrl"].stringValue
