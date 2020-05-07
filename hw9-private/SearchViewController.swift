@@ -15,11 +15,15 @@ import MapKit
 import Kingfisher
 import Alamofire
 
+protocol submitSearch {
+    func submitSearch(query: String)
+}
+
 class SearchViewController: UITableViewController {
     
     let searchBar = UISearchBar()
     var data = [String]()
-    
+    var delegate: submitSearch?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
@@ -78,5 +82,6 @@ class SearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchBar.text = self.data[indexPath.item]
+        self.delegate?.submitSearch(query: self.data[indexPath.item])
     }
 }

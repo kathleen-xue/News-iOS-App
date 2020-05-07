@@ -48,6 +48,15 @@ class HeadlineViewController: ButtonBarPagerTabStripViewController, UISearchBarD
         SwiftSpinner.hide()
     }
     
+    func submitSearch(query: String) {
+        self.dismiss(animated: true)
+        self.searchQuery = query
+        let searchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultsPageController") as! SearchResultsPageController
+        searchBar.text = ""
+        searchVC.searchQuery = query
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let world = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HeadlineSectionView") as! HeadlineSectionViewController
