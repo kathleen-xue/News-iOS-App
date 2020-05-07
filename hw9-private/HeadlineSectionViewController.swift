@@ -24,7 +24,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     let bookmarkFalse = UIImage(systemName: "bookmark")
     let defaults = UserDefaults.standard
     var bookmarkArray = [String]()
-    
+    private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         let sectionName = self.section.uppercased()
         SwiftSpinner.show("Loading \(sectionName) Headlines...")
@@ -33,6 +33,12 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
         headlineSectionTable.dataSource = self
         headlineSectionTable.delegate = self
         headlineSectionTable.rowHeight = 110
+        
+        if #available(iOS 10.0, *) {
+            headlineSectionTable.refreshControl = refreshControl
+        } else {
+            headlineSectionTable.addSubview(refreshControl)
+        }
         
         bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         
@@ -47,6 +53,18 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
             self.data = data
             self.headlineSectionTable.reloadData()
             SwiftSpinner.hide()
+        })
+        refreshControl.addTarget(self, action: #selector(refreshNews(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshNews(_ sender: Any) {
+        // Fetch Weather Data
+        getter.getHeadlineResults(section: self.section, completion: { (data) -> Void in
+            //print(data)
+            self.data = data
+            self.headlineSectionTable.reloadData()
+            self.refreshControl.endRefreshing()
+            //self.activityIndicatorView.stopAnimating()
         })
     }
     
