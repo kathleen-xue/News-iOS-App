@@ -76,8 +76,14 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             self.noBookmarksLabel.text = nil
         }
         self.bookmarksCollection.reloadData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         SwiftSpinner.hide()
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.bookmarkArray.count

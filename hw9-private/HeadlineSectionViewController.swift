@@ -72,9 +72,12 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         headlineSectionTable.reloadData()
+        //SwiftSpinner.hide()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //let sectionName = self.section.uppercased()
+        //SwiftSpinner.show("Loading \(sectionName) Headlines...")
         super.viewWillAppear(animated)
         self.defaults = UserDefaults.standard
         self.bookmarkArray = UserDefaults.standard.object(forKey: "bookmarkArray") as? [String] ?? [String]()
