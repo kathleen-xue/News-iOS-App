@@ -18,8 +18,8 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     let getter = DetailedNewsGetter()
     let defaults = UserDefaults.standard
     var bookmarkArray = [String]()
+    var urlArray = [String]()
     var data = [[String: String]]()
-    
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
     
@@ -36,8 +36,9 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         bookmarksCollection.delegate = self
         self.bookmarkArray = defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         //print(self.bookmarkArray)
+        self.noBookmarksLabel.text = nil
         if self.bookmarkArray.count > 0 {
-            self.noBookmarksLabel.text = ""
+            self.noBookmarksLabel.text = nil
             self.data = [[String: String]]()
             self.getter.getDetailedNewsBulk(idArr: self.bookmarkArray, completion: {(d) -> Void in
                 print(d)
@@ -49,7 +50,8 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
                         let section = jsonData["section"].stringValue
                         let date = jsonData["date"].stringValue
                         let id = self.bookmarkArray[i]
-                        self.data.append(["image": image, "title": title, "section": section, "date": date, "id": id])
+                        let url = jsonData["url"].stringValue
+                        self.data.append(["image": image, "title": title, "section": section, "date": date, "id": id, "url": url])
                     }
                     SwiftSpinner.hide()
                 }
@@ -72,6 +74,10 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.bookmarkArray.count
+    }
+    
+    func updateTableView() {
+        self.bookmarksCollection.reloadData()
     }
     
     /*func collectionView(_ collectionView: UICollectionView,
@@ -99,8 +105,39 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         return sectionInsets.left
     }*/
     
+    func collectionView(_ collectionView: UICollectionView,
+                                 contextMenuConfigurationForItemAt indexPath: IndexPath,
+      point: CGPoint) -> UIContextMenuConfiguration? {
+        let cell = self.bookmarksCollection.cellForItem(at: indexPath) as! BookmarksViewCell
+        
+        let twitter = UIAction(title: "Share with Twitter",
+                              image: UIImage(named: "twitter")) { _ in
+                                UIApplication.shared.openURL(NSURL(string: "https://twitter.com/intent/tweet?text=Check%20out%20this%20article!&hashtags=CSCI571&url=\(cell.url)")! as URL)
+      }
+
+      let bookmark = UIAction(title: "Bookmark",
+        image: UIImage(systemName: "bookmark.fill")) { action in
+            self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
+            cell.isBookmarked = false
+            self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+            if self.bookmarkArray.count == 0 {
+                self.noBookmarksLabel.text = "No bookmarks added."
+            } else {
+                self.noBookmarksLabel.text = nil
+            }
+            self.bookmarksCollection.reloadData()
+      }
+
+       return UIContextMenuConfiguration(identifier: nil,
+         previewProvider: nil) { _ in
+         UIMenu(title: "Actions", children: [twitter, bookmark])
+       }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookmarksCell", for: indexPath) as! BookmarksViewCell
+        self.noBookmarksLabel.text = nil
+        cell.delegate = self as? updateTable
         getter.getDetailedNews(id: self.bookmarkArray[indexPath.row], completion: {(data) -> Void in
             let cellData = JSON(data)
             cell.bookmarksTitle.text = cellData["title"].stringValue
@@ -109,10 +146,16 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             cell.bookmarksImg?.kf.setImage(with: imgurl)
             cell.bookmarksSection.text = cellData["section"].stringValue
             cell.id = self.bookmarkArray[indexPath.row]
+            cell.url = cellData["url"].stringValue
             cell.bookmarkButtonAction = { [unowned self] in
                     cell.isBookmarked = false
                     self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
                 self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                if self.bookmarkArray.count == 0 {
+                    self.noBookmarksLabel.text = "No bookmarks added."
+                } else {
+                    self.noBookmarksLabel.text = nil
+                }
                 self.bookmarksCollection.reloadData()
             }
         })
