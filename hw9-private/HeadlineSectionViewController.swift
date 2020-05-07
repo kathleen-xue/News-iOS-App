@@ -23,7 +23,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     var data = [Any]()
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
     var bookmarkArray = [String]()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -76,6 +76,9 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.defaults = UserDefaults.standard
+        self.bookmarkArray = UserDefaults.standard.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        self.headlineSectionTable.reloadData()
     }
     
     func toggleBookmark(id: String) {

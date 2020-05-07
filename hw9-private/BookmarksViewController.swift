@@ -17,7 +17,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var noBookmarksLabel: UILabel!
     @IBOutlet weak var bookmarksCollection: UICollectionView!
     let getter = DetailedNewsGetter()
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
     var bookmarkArray = [String]()
     var urlArray = [String]()
     var data = [[String: String]]()
@@ -68,6 +68,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     override func viewWillAppear(_ animated: Bool) {
         SwiftSpinner.show("Loading Bookmarks...")
         super.viewWillAppear(animated)
+        self.defaults = UserDefaults.standard
         self.bookmarkArray = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         self.bookmarksCollection.reloadData()
         SwiftSpinner.hide()

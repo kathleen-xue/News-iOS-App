@@ -40,7 +40,7 @@ class DetailedPageViewController: UIViewController {
     var bodyText: String = ""
     var url: String = "https://theguardian.com"
     let formatter = Formatter()
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
     var bookmarkArray = [String]()
     var id = ""
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
@@ -75,6 +75,7 @@ class DetailedPageViewController: UIViewController {
             self.delegate?.toggleBookmark(id: self.thumbnailData ?? "")
         }
     }
+
     
     @IBAction func didTapTwitter(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "https://twitter.com/intent/tweet?text=Check%20out%20this%20article!&hashtags=CSCI571&url=\(self.url)")! as URL)
@@ -105,6 +106,8 @@ class DetailedPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SwiftSpinner.show("Loading Detailed Article...")
+        self.defaults = UserDefaults.standard
+        self.bookmarkArray = UserDefaults.standard.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         if let thumbnailData = thumbnailData {
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in

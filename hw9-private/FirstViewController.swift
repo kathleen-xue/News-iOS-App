@@ -37,7 +37,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     var searchQuery = ""
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
-    let defaults = UserDefaults.standard
+    var defaults = UserDefaults.standard
     var bookmarkArray = [String]()
     private let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -90,6 +90,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.defaults = UserDefaults.standard
+        self.bookmarkArray = UserDefaults.standard.object(forKey: "bookmarkArray") as? [String] ?? [String]()
         homeNewsTable.reloadData()
     }
     
@@ -190,7 +192,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             self.homeNewsData = data
             self.homeNewsTable.reloadData()
             self.refreshControl.endRefreshing()
-            //self.activityIndicatorView.stopAnimating()
+            //self.bookmarkArray = UserDefaults.standard. //self.activityIndicatorView.stopAnimating()
         })
     }
     
