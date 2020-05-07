@@ -70,6 +70,11 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         super.viewWillAppear(animated)
         self.defaults = UserDefaults.standard
         self.bookmarkArray = self.defaults.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        if self.bookmarkArray.count == 0 {
+            self.noBookmarksLabel.text = "No bookmarks added."
+        } else {
+            self.noBookmarksLabel.text = nil
+        }
         self.bookmarksCollection.reloadData()
         SwiftSpinner.hide()
     }
@@ -147,7 +152,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             cell.bookmarksDate.text =
                 String(self.formatter.formatTraditionalDate(date: cellData["date"].stringValue).dropLast(6))
             let imgurl = URL(string: cellData["image"].stringValue)
-            if imgurl == nil {
+            if imgurl == nil || cellData["image"].stringValue == "" {
                 cell.bookmarksImg.image = UIImage(named: "default-guardian")
             } else {
                 cell.bookmarksImg?.kf.setImage(with: imgurl)
