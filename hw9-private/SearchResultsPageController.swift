@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 import SwiftSpinner
+import Toast_Swift
 
 class SearchResultsPageController : UIViewController, UITableViewDelegate, UITableViewDataSource, DetailedPageDelegate {
 
@@ -80,12 +81,18 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
                 self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
+                self.view.makeToast("Article removed from Bookmarks")
+                self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.searchResultsTable.reloadData()
             } else {
                 cell.isBookmarked = true
                 cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
                 self.bookmarkArray.append(cell.id)
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
+                self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.searchResultsTable.reloadData()
             }
-            self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+            
         }
         
         if let imgArr = jsonData["blocks"]["main"]["elements"][0]["assets"].array {
@@ -128,6 +135,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
                   self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
                   cell.isBookmarked = false
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article removed from Bookmarks")
                   self.searchResultsTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
@@ -140,6 +148,7 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
                 self.bookmarkArray.append(cell.id)
                   cell.isBookmarked = true
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
                   self.searchResultsTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
