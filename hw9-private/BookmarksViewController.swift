@@ -130,7 +130,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
 
        return UIContextMenuConfiguration(identifier: nil,
          previewProvider: nil) { _ in
-         UIMenu(title: "Actions", children: [twitter, bookmark])
+         UIMenu(title: "Menu", children: [twitter, bookmark])
        }
     }
     
