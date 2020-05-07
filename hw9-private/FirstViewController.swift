@@ -208,6 +208,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
         let currentJson = JSON(self.homeNewsData[indexPath.item])
         let id = currentJson["id"].stringValue
         cell.id = id
+        cell.url = currentJson["webUrl"].stringValue
         if self.bookmarkArray.firstIndex(of: cell.id) != nil {
             cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
             cell.isBookmarked = true
@@ -266,6 +267,42 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
             cell.homeNewsTableTime?.text = "NaNs ago"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+      point: CGPoint) -> UIContextMenuConfiguration? {
+        let cell = self.homeNewsTable.cellForRow(at: indexPath) as! HomeNewsTableCell
+        
+        let twitter = UIAction(title: "Share with Twitter",
+                              image: UIImage(named: "twitter")) { _ in
+                                UIApplication.shared.openURL(NSURL(string: "https://twitter.com/intent/tweet?text=Check%20out%20this%20article!&hashtags=CSCI571&url=\(cell.url)")! as URL)
+      }
+        if cell.isBookmarked {
+            let bookmark = UIAction(title: "Bookmark",
+              image: UIImage(systemName: "bookmark.fill")) { action in
+                  self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
+                  cell.isBookmarked = false
+                  self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                  self.homeNewsTable.reloadData()
+            }
+            return UIContextMenuConfiguration(identifier: nil,
+              previewProvider: nil) { _ in
+              UIMenu(title: "Menu", children: [twitter, bookmark])
+            }
+        } else {
+            let bookmark = UIAction(title: "Bookmark",
+              image: UIImage(systemName: "bookmark")) { action in
+                self.bookmarkArray.append(cell.id)
+                  cell.isBookmarked = true
+                  self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                  self.homeNewsTable.reloadData()
+            }
+            return UIContextMenuConfiguration(identifier: nil,
+              previewProvider: nil) { _ in
+              UIMenu(title: "Menu", children: [twitter, bookmark])
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
