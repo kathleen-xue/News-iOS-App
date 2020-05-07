@@ -11,6 +11,7 @@ import UIKit
 import XLPagerTabStrip
 import SwiftSpinner
 import SwiftyJSON
+import Toast_Swift
 
 class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DetailedPageDelegate {
     
@@ -110,6 +111,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
                   self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
                   cell.isBookmarked = false
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article removed from Bookmarks")
                   self.headlineSectionTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
@@ -122,6 +124,7 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
                 self.bookmarkArray.append(cell.id)
                   cell.isBookmarked = true
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
                   self.headlineSectionTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
@@ -151,10 +154,12 @@ class HeadlineSectionViewController: UIViewController, IndicatorInfoProvider, UI
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
                 self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
+                self.view.makeToast("Article removed from Bookmarks")
             } else {
                 cell.isBookmarked = true
                 cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
                 self.bookmarkArray.append(cell.id)
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
             }
             self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
         }
