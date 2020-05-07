@@ -108,7 +108,15 @@ class DetailedPageViewController: UIViewController {
         SwiftSpinner.show("Loading Detailed Article...")
         self.defaults = UserDefaults.standard
         self.bookmarkArray = UserDefaults.standard.object(forKey: "bookmarkArray") as? [String] ?? [String]()
+        
         if let thumbnailData = thumbnailData {
+            if (self.bookmarkArray.firstIndex(of: thumbnailData) != nil) {
+                self.isBookmarked = true
+                self.bookmarkButton.image = self.bookmarkTrue
+            } else {
+                self.isBookmarked = false
+                self.bookmarkButton.image = self.bookmarkFalse
+            }
             let getter = DetailedNewsGetter()
             getter.getDetailedNews(id: thumbnailData, completion: {(data) -> Void in
                 let jsonData = JSON(data)
