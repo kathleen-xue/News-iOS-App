@@ -22,7 +22,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
     var data = [[String: String]]()
     let bookmarkTrue = UIImage(systemName: "bookmark.fill")
     let bookmarkFalse = UIImage(systemName: "bookmark")
-    
+    let formatter = Formatter()
     let sectionInsets = UIEdgeInsets(top: 50.0,
     left: 20.0,
     bottom: 50.0,
@@ -141,7 +141,8 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
         getter.getDetailedNews(id: self.bookmarkArray[indexPath.row], completion: {(data) -> Void in
             let cellData = JSON(data)
             cell.bookmarksTitle.text = cellData["title"].stringValue
-            cell.bookmarksDate.text = cellData["date"].stringValue
+            cell.bookmarksDate.text =
+                String(self.formatter.formatTraditionalDate(date: cellData["date"].stringValue).dropLast(6))
             let imgurl = URL(string: cellData["image"].stringValue)
             cell.bookmarksImg?.kf.setImage(with: imgurl)
             cell.bookmarksSection.text = cellData["section"].stringValue

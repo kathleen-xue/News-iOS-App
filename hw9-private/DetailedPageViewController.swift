@@ -99,10 +99,6 @@ class DetailedPageViewController: UIViewController {
         self.delegate?.toggleBookmark(id: self.id)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SwiftSpinner.show("Loading Detailed Article...")
