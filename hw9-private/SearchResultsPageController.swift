@@ -63,8 +63,9 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultsCell", for: indexPath) as! SearchResultsTableCell
         let jsonData = JSON(self.data[indexPath.item])
         let id = jsonData["id"].stringValue
-        cell.id = id
         
+        cell.id = id
+        cell.url = jsonData["webUrl"].stringValue
         if self.bookmarkArray.firstIndex(of: cell.id) != nil {
             cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
             cell.isBookmarked = true
@@ -110,6 +111,42 @@ class SearchResultsPageController : UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110.0
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+      point: CGPoint) -> UIContextMenuConfiguration? {
+        let cell = self.searchResultsTable.cellForRow(at: indexPath) as! SearchResultsTableCell
+        
+        let twitter = UIAction(title: "Share with Twitter",
+                              image: UIImage(named: "twitter")) { _ in
+                                UIApplication.shared.openURL(NSURL(string: "https://twitter.com/intent/tweet?text=Check%20out%20this%20article!&hashtags=CSCI571&url=\(cell.url)")! as URL)
+      }
+        if cell.isBookmarked {
+            let bookmark = UIAction(title: "Bookmark",
+              image: UIImage(systemName: "bookmark.fill")) { action in
+                  self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
+                  cell.isBookmarked = false
+                  self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                  self.searchResultsTable.reloadData()
+            }
+            return UIContextMenuConfiguration(identifier: nil,
+              previewProvider: nil) { _ in
+              UIMenu(title: "Menu", children: [twitter, bookmark])
+            }
+        } else {
+            let bookmark = UIAction(title: "Bookmark",
+              image: UIImage(systemName: "bookmark")) { action in
+                self.bookmarkArray.append(cell.id)
+                  cell.isBookmarked = true
+                  self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                  self.searchResultsTable.reloadData()
+            }
+            return UIContextMenuConfiguration(identifier: nil,
+              previewProvider: nil) { _ in
+              UIMenu(title: "Menu", children: [twitter, bookmark])
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

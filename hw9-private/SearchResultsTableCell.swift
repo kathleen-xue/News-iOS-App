@@ -17,6 +17,7 @@ class SearchResultsTableCell: UITableViewCell {
     
     var bookmarkButtonAction : (() -> ())?
     var id = ""
+    var url = ""
     var isBookmarked = false
     
     override func awakeFromNib() {
