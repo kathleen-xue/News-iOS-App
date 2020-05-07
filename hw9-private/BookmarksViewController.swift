@@ -147,7 +147,11 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             cell.bookmarksDate.text =
                 String(self.formatter.formatTraditionalDate(date: cellData["date"].stringValue).dropLast(6))
             let imgurl = URL(string: cellData["image"].stringValue)
-            cell.bookmarksImg?.kf.setImage(with: imgurl)
+            if imgurl == nil {
+                cell.bookmarksImg.image = UIImage(named: "default-guardian")
+            } else {
+                cell.bookmarksImg?.kf.setImage(with: imgurl)
+            }
             cell.bookmarksSection.text = cellData["section"].stringValue
             cell.id = self.bookmarkArray[indexPath.row]
             cell.url = cellData["url"].stringValue
