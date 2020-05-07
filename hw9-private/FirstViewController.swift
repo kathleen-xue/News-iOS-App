@@ -13,6 +13,7 @@ import CoreLocation
 import MapKit
 import Kingfisher
 import SwiftSpinner
+import Toast_Swift
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, DetailedPageDelegate  {
     
@@ -223,10 +224,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 cell.isBookmarked = false
                 cell.bookmarkButton.setImage(self.bookmarkFalse, for: .normal)
                 self.bookmarkArray = self.bookmarkArray.filter {$0 != cell.id}
+                self.view.makeToast("Article removed from Bookmarks")
             } else {
                 cell.isBookmarked = true
                 cell.bookmarkButton.setImage(self.bookmarkTrue, for: .normal)
                 self.bookmarkArray.append(cell.id)
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
             }
             self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
         }
@@ -284,6 +287,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                   self.bookmarkArray = self.bookmarkArray.filter{$0 != self.bookmarkArray[indexPath.row]}
                   cell.isBookmarked = false
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article removed from Bookmarks")
                   self.homeNewsTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
@@ -296,6 +300,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate, UITableV
                 self.bookmarkArray.append(cell.id)
                   cell.isBookmarked = true
                   self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
+                self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
                   self.homeNewsTable.reloadData()
             }
             return UIContextMenuConfiguration(identifier: nil,
