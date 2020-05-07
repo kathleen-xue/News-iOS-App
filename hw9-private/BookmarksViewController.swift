@@ -11,6 +11,7 @@ import UIKit
 import SwiftyJSON
 import Kingfisher
 import SwiftSpinner
+import Toast_Swift
 
 class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DetailedPageDelegate {
     @IBOutlet weak var noBookmarksLabel: UILabel!
@@ -125,6 +126,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
             } else {
                 self.noBookmarksLabel.text = nil
             }
+            self.view.makeToast("Article removed from Bookmarks")
             self.bookmarksCollection.reloadData()
       }
 
@@ -157,6 +159,7 @@ class BookmarksViewController : UIViewController, UICollectionViewDelegate, UICo
                 } else {
                     self.noBookmarksLabel.text = nil
                 }
+                self.view.makeToast("Article removed from Bookmarks")
                 self.bookmarksCollection.reloadData()
             }
         })

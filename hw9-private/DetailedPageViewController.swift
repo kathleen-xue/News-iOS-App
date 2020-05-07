@@ -14,6 +14,7 @@ import CoreLocation
 import MapKit
 import Kingfisher
 import SwiftSpinner
+import Toast_Swift
 
 protocol DetailedPageDelegate {
     func toggleBookmark(id: String)
@@ -90,10 +91,12 @@ class DetailedPageViewController: UIViewController {
             self.isBookmarked = false
             self.bookmarkButton.image = self.bookmarkFalse
             self.bookmarkArray = self.bookmarkArray.filter{$0 != self.id}
+            self.view.makeToast("Article removed from Bookmarks")
         } else {
             self.isBookmarked = true
             self.bookmarkButton.image = self.bookmarkTrue
             self.bookmarkArray.append(self.id)
+            self.view.makeToast("Article bookmarked. Check out the Bookmarks tab to view")
         }
         self.defaults.set(self.bookmarkArray, forKey: "bookmarkArray")
         self.delegate?.toggleBookmark(id: self.id)
