@@ -7,4 +7,4 @@ A simple news app that displays headlines, detailed articles, search trends, and
 * Google Search Trends API
 * Bing Autosuggest API
 
-![homepage](/images/homepage) ![headlines](/images/headlines) ![trending searches](/images/trend) ![bookmarks](/images/bookmarks)
+![homepage](/images/homepage.png) ![headlines](/images/headlines.png) ![trending searches](/images/trend.png) ![bookmarks](/images/bookmarks.png)
