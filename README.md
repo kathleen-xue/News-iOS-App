@@ -10,6 +10,7 @@ A simple news app that displays headlines, detailed articles, search trends, and
 ## To Run:
 1. Clone this repository
 1. Open news-ios-app.xcodeproj in Xcode
+1. Go to [OpenWeatherAPI](https://openweathermap.org/api) and [Bing Autosuggest API](https://azure.microsoft.com/en-us/services/cognitive-services/autosuggest/) to grab your API keys, and insert them in WeatherGetter.swift and SearchViewController.swift, respectively.
 1. Build with command `command ⌘` + `B`, or simply press the ▶ button in the top left corner of the Xcode UI. This should open up the simulator, which will allow you to experiment with the app! For best results, set iPhone version to iPhone 11 Pro Max.
 
 <p float="left">
