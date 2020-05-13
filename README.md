@@ -13,8 +13,8 @@ A simple news app that displays headlines, detailed articles, search trends, and
 1. Build with command `command` + `B`, or the "Play" button
 
 <p float="left">
-	<img src="/images/homepage.png" alt="homepage" width="100"/>
-	<img src="/images/headlines.png" alt="headlines" width="100"/>
-	<img src="/images/trend.png" alt="trending searches" width="100"/>
-	<img src="/images/bookmarks.png" alt="bookmarks" width="100"/>
+	<img src="/images/homepage.png" alt="homepage" width="200"/>
+	<img src="/images/headlines.png" alt="headlines" width="200"/>
+	<img src="/images/trend.png" alt="trending searches" width="200"/>
+	<img src="/images/bookmarks.png" alt="bookmarks" width="200"/>
 </p>
