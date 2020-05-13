@@ -15,7 +15,7 @@ class WeatherGetter {
     func getWeather(lat: Double, lon: Double, completion: @escaping (Bool)->()) -> (String, String) {
     _ = "http://api.openweathermap.org/data/2.5/weather"
     _ = "api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}"
-    let apiKey = "0411db9d99ea4753e711226ad39d3157"
+    let apiKey = ""//YOUR API KEY HERE
     let request = NSMutableURLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)")!)
     
     URLSession.shared.dataTask(with: request as URLRequest) {
