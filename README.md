@@ -1,5 +1,5 @@
 # News iOS App
-A simple news app that displays headlines, detailed articles, search trends, and allows users to bookmark news articles they would like to return to.
+A simple news app that displays headlines, detailed articles, search trends, and allows users to bookmark news articles they would like to return to. The corresponding web app can be found [here](https://github.com/kathleen-xue/news-web-app).
 
 ## APIs Used:
 * Guardian News API
