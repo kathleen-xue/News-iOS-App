@@ -47,7 +47,7 @@ class SearchViewController: UITableViewController {
         self.data = [String]()
         let url = "https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=\(query)"
         let headers: HTTPHeaders = [
-            "Ocp-Apim-Subscription-Key": "", //YOUR BING AUTOSUGGEST API KEY HERE
+            "Ocp-Apim-Subscription-Key": "295892d4ab4649d5b99cf93f690c076b",
           "Accept": "application/json"
         ]
         Alamofire.request(url, headers: headers)
