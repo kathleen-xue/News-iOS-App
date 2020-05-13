@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import hw9_private
+@testable import news_ios_app
 
 class hw9_privateTests: XCTestCase {
 
