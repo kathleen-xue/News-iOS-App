@@ -10,29 +10,11 @@ A simple news app that displays headlines, detailed articles, search trends, and
 ## To Run:
 1. Download this repository
 1. Open news-ios-app.xcodeproj in Xcode
-1. Build with command `command` + `B`, or the ▶ button
+1. Build with command `command` + `B`, or the "Play" button
 
-<style>
-	.row {
-		display: flex;
-	}
-	.column {
-		flex: 25%;
-		padding: 5px;
-	}
-</style>
-
-<div class="row">
-	<div class="column">
-		<img src="/images/homepage.png" alt="homepage"/>
-	</div>
-	<div class="column">
-		<img src="/images/headlines.png" alt="headlines"/>
-	</div>
-	<div class="column">
-		<img src="/images/trend.png" alt="trending searches"/>
-	</div>
-	<div class="column">
-		<img src="/images/bookmarks.png" alt="bookmarks"/>
-	</div>
-</div>
+<p float="left">
+	<img src="/images/homepage.png" alt="homepage" width="100"/>
+	<img src="/images/headlines.png" alt="headlines" width="100"/>
+	<img src="/images/trend.png" alt="trending searches" width="100"/>
+	<img src="/images/bookmarks.png" alt="bookmarks" width="100"/>
+</p>
